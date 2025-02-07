@@ -1,5 +1,7 @@
+import s from './RegisterForm.module.scss'
+
 function RegisterForm() {
-  return <div>RegisterForm</div>
+  return <div className={s.registerForm}>RegisterForm</div>
 }
 
 export default RegisterForm

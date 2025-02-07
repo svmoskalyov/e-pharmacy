@@ -1,5 +1,7 @@
+import s from './CartPage.module.scss'
+
 function CartPage() {
-  return <div>CartPage</div>
+  return <div className={s.cartPage}>CartPage</div>
 }
 
 export default CartPage

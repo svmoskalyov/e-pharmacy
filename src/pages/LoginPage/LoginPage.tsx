@@ -1,5 +1,7 @@
+import s from './LoginPage.module.scss'
+
 function LoginPage() {
-  return <div>LoginPage</div>
+  return <div className={s.loginPage}>LoginPage</div>
 }
 
 export default LoginPage
