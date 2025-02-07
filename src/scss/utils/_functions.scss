@@ -1,0 +1,28 @@
+@use 'variables' as *;
+@use "sass:map";
+
+@function get-font($key) {
+  @return map.get($fonts, $key);
+}
+
+@function get-font-weight($key) {
+  @return map.get($fonts-weights, $key);
+}
+
+@function get-font-size($key) {
+  $px-value: map.get($fonts-sizes, $key);
+  @return #{$px-value}px;
+}
+
+@function get-color($key) {
+  @return map.get($colors, $key);
+}
+
+@function get-breakpoint-np($key) {
+  @return map.get($breakpoints, $key);
+}
+
+@function get-breakpoint($key) {
+  $px-value: map.get($breakpoints, $key);
+  @return #{$px-value}px;
+}

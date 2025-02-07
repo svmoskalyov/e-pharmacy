@@ -1,0 +1,27 @@
+@use 'functions' as *;
+
+@mixin auto-size($param, $min, $max) {
+  $min-px: #{$min}px;
+  $max-px: #{$max}px;
+  $min-dev-px: get-breakpoint(mobile);
+  $max-dev-px: get-breakpoint(desktop);
+  $min-dev: get-breakpoint-np(mobile);
+  $max-dev: get-breakpoint-np(desktop);
+
+  @media screen and (min-width: $min-dev-px) and (max-width: $max-dev-px) {
+    #{$param}: calc($min-px + ($max - $min) * ((100vw - $min-dev-px) / ($max-dev - $min-dev)));
+  }
+
+  @media screen and (min-width: $max-dev-px) {
+    #{$param}: $max-px;
+  }
+}
+
+@mixin retina {
+
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    @content;
+  }
+}
