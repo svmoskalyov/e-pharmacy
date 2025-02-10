@@ -30,26 +30,20 @@ const data: DataItem[] = [
   { id: 20, name: 'Елемент 20' }
 ]
 
-// const usePagination = <T extends any>(data: T[], volume: number = 10)
-
 function MedicinePage() {
   const [currentPage, setCurrentPage] = useState(1)
-
   const itemsPerPage = 5
   const totalPages = Math.ceil(data.length / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const currentItems = data.slice(startIndex, endIndex)
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
   }
 
-  // Визначення початкового та кінцевого індексів для поточної сторінки
-  const startIndex = (currentPage - 1) * itemsPerPage
-  const endIndex = startIndex + itemsPerPage
-  const currentItems = data.slice(startIndex, endIndex)
-
   return (
-    <div>
-      <h1>Пагінація</h1>
+    <div className={s.medicinePage}>
       <ul>
         {currentItems.map(item => (
           <li key={item.id}>{item.name}</li>
@@ -57,65 +51,11 @@ function MedicinePage() {
       </ul>
       <Pagination
         totalPages={totalPages}
-        // totalItems={data.length}
-        // itemsPerPage={itemsPerPage}
         currentPage={currentPage}
         onPageChange={handlePageChange}
       />
     </div>
   )
-
-  // // ------------------------------ Pagination ------------------------------
-  // const [currentPage, setCurrentPage] = useState<number>(1)
-  // const itemsPerPage = 6
-  // // Список елементів (наприклад, дані з API)
-  // const items: string[] = [
-  //   'Item 1',
-  //   'Item 2',
-  //   'Item 3',
-  //   'Item 4',
-  //   'Item 5',
-  //   'Item 6',
-  //   'Item 7',
-  //   'Item 8',
-  //   'Item 9',
-  //   'Item 10',
-  //   'Item 11',
-  //   'Item 12',
-  //   'Item 13',
-  //   'Item 14',
-  //   'Item 15',
-  //   'Item 16',
-  //   'Item 17',
-  //   'Item 18',
-  //   'Item 19',
-  //   'Item 20'
-  // ]
-
-  // // Показати елементи на поточній сторінці
-  // const indexOfLastItem = currentPage * itemsPerPage
-  // const indexOfFirstItem = indexOfLastItem - itemsPerPage
-  // const currentItems = items.slice(indexOfFirstItem, indexOfLastItem)
-  // // Функція для зміни сторінки
-  // const paginate = (pageNumber: number): void => setCurrentPage(pageNumber)
-
-  // return (
-  //   <div>
-  //     <ul>
-  //       {currentItems.map((item, index) => (
-  //         <li key={index}>{item}</li>
-  //       ))}
-  //     </ul>
-  //     <Pagination
-  //       itemsPerPage={itemsPerPage}
-  //       totalItems={items.length}
-  //       paginate={paginate}
-  //       currentPage={currentPage}
-  //     />
-  //   </div>
-  // )
-
-  // return <div className={s.medicinePage}>MedicinePage</div>
 }
 
 export default MedicinePage
