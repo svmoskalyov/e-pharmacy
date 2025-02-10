@@ -1,0 +1,39 @@
+.productFilterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.filterControls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.productList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.productItem {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productImage {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.productDetails {
+  text-align: center;
+}
