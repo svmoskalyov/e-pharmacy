@@ -9,7 +9,6 @@ type IconProps = {
 function Icon({ name, size, fill='inherit' }: IconProps) {
   return (
     <svg
-      className={s.icon}
       style={{
         width: `${size}`,
         height: `${size}`,
