@@ -1,12 +1,12 @@
 import sprite from '../../../assets/icons/sprite.svg'
 
-type IconTypes = {
+type IconProps = {
   name: string
   size: string
   fill?: string
 }
 
-function Icon({ name, size, fill='inherit' }: IconTypes) {
+function Icon({ name, size, fill='inherit' }: IconProps) {
   return (
     <svg
       className={s.icon}
