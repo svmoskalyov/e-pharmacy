@@ -1,6 +1,14 @@
-$colors: (
-  'error': #FF0000,
-);
+* {
+  --accent: #59B17A;
+  --accent-muted: #59B17A33;
+  --darkened: #3F945F;
+  --text-primary: #1D1E21;
+  --text-secondary: #FFFFFF;
+  --text-muted: #93939A;
+  --bg: #F7F8FA;
+  --star: #FFC531;
+  --danger: #E85050;
+}
 
 $breakpoints: (
   'mobile': 375,
