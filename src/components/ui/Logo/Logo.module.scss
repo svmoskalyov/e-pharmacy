@@ -1,0 +1,30 @@
+@use '../../../scss/utils/mixins' as *;
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 32px;
+  width: 135px;
+  cursor: pointer;
+}
+
+.img {
+  height: 32px;
+  width: 32px;
+  background-image: var(--logo1x) !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include retina {
+    background-image: var(--logo2x) !important;
+  }
+}
+
+.text {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: auto;
+  letter-spacing: -0.05px;
+}
