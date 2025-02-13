@@ -1,0 +1,36 @@
+.backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 50;
+  transition: width 0.3s ease-in-out;
+
+  &.open {
+    width: 100%;
+  }
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--accent);
+  z-index: 100;
+  transition: width 0.3s ease-in-out;
+
+  &.open {
+    width: 210px;
+  }
+}
+
+.wrapperBtnCloseDrawer {
+  display: block;
+  text-align: right;
+  padding: 20px;
+  padding-left: 154px;
+}
