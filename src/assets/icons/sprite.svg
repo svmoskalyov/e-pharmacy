@@ -43,9 +43,9 @@
     </g>
   </symbol>
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 26" id="burger">
-    <path d="M28.3379 13.207H4.33789" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-    <path d="M28.3379 8.00684H4.33789" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-    <path d="M28.3379 18.4072H4.33789" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M28.3379 13.207H4.33789" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M28.3379 8.00684H4.33789" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M28.3379 18.4072H4.33789" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
   </symbol>
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="cart">
     <g clip-path="url(#clip0_343_10554)">
