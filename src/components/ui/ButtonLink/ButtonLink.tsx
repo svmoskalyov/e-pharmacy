@@ -1,16 +1,15 @@
-import { NavLink } from 'react-router'
+import { NavLink, NavLinkProps } from 'react-router'
 import s from './ButtonLink.module.scss'
 
-interface ButtonLinkProps {
+interface ButtonLinkProps extends NavLinkProps {
   to: string
   variant: 'contained' | 'outlined' | 'text'
   children: React.ReactNode
-  props?: { [key: string]: unknown }
 }
 
-function ButtonLink({ to, variant, children, ...props }: ButtonLinkProps) {
+function ButtonLink({ to, variant, children, ...rest }: ButtonLinkProps) {
   return (
-    <NavLink to={to} className={`${s[variant]}`} {...props}>
+    <NavLink to={to} className={`${s[variant]}`} {...rest}>
       {children}
     </NavLink>
   )
