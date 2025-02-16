@@ -5,6 +5,8 @@ import Icon from '../ui/Icon'
 import Drawer from '../Drawer'
 import NavigationLinks from '../NavigationLinks'
 import AuthenticationLinks from '../AuthenticationLinks'
+import Avatar from '../ui/Avatar'
+import Cart from '../ui/Cart'
 import s from './Header.module.scss'
 
 function Header() {
@@ -12,6 +14,7 @@ function Header() {
   const location = useLocation()
   let place = ''
   const toggleDrawer = () => setIsOpen(!isOpen)
+  const isAuth = false
 
   if (location.pathname === '/' || location.pathname === '/home') {
     place = 'home'
@@ -28,13 +31,24 @@ function Header() {
         }
       >
         <Logo place={place} />
-        <button aria-label="drawer open" onClick={toggleDrawer}>
-          <Icon
-            name="burger"
-            size="32px"
-            color={place === 'home' ? 'var(--text-secondary)' : 'var(--accent)'}
-          />
-        </button>
+
+        <div className={s.actions}>
+          {isAuth && (
+            <>
+              <Cart count={0} />
+              <Avatar name="John Doe" />
+            </>
+          )}
+          <button aria-label="drawer open" onClick={toggleDrawer}>
+            <Icon
+              name="burger"
+              size="32px"
+              color={
+                place === 'home' ? 'var(--text-secondary)' : 'var(--accent)'
+              }
+            />
+          </button>
+        </div>
       </header>
 
       <Drawer isOpen={isOpen} onClose={toggleDrawer}>
