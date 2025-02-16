@@ -1,0 +1,30 @@
+.cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--text-secondary);
+  border-radius: 50%;
+  border: 1px solid #f1f1f1;
+  text-transform: uppercase;
+}
+
+.badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+  background-color: var(--accent-muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: auto;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+}
