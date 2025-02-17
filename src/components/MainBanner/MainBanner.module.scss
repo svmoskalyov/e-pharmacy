@@ -1,0 +1,38 @@
+@use '../../scss/utils/mixins' as *;
+
+.mainBanner {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 728px;
+  color: var(--text-secondary);
+  background-color: var(--accent);
+}
+
+.box {
+  height: 331px;
+  width: 100%;
+  background-image: url('../../assets/images/pill-wg1x.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include retina {
+    background-image: url('../../assets/images/pill-wg2x.png');
+  }
+}
+
+.title {
+  padding: 20px 0 30px;
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 50px;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  margin-left: auto;
+  width: 156px;
+  font-size: 12px;
+  line-height: 16px;
+}
