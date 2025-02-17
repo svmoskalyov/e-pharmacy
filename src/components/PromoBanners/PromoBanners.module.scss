@@ -1,0 +1,62 @@
+.promoBanners {
+  padding: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 410px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px 18px;
+  height: 126px;
+  color: var(--text-primary);
+  background-color: var(--text-secondary);
+  border: 1px solid #f1f1f1;
+  border-radius: 27px;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+}
+
+.number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  width: 54px;
+  font-size: 24px;
+  line-height: 24px;
+  color: var(--accent);
+  background-color: var(--accent-muted);
+  border-radius: 50%;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  text-transform: capitalize;
+}
+
+.discount {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 33px;
+}
+
+.btn {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 18px;
+  text-transform: capitalize;
+}
