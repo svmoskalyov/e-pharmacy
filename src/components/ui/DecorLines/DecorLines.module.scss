@@ -1,0 +1,22 @@
+.decorLines {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  rotate: 22deg;
+}
+
+.line {
+  height: 36px;
+  width: 167px;
+  border-radius: 20px;
+  background-color: var(--accent-muted);
+
+}
+
+.line:first-child {
+  margin-left: 50px;
+}
+
+.line:last-child {
+  margin-left: 40px;
+}
