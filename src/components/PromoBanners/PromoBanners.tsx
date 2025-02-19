@@ -1,3 +1,4 @@
+import SectionWrapper from '../SectionWrapper'
 import s from './PromoBanners.module.scss'
 
 const banners = [
@@ -12,7 +13,7 @@ const banners = [
 
 function PromoBanners() {
   return (
-    <div className={s.promoBanners}>
+    <SectionWrapper>
       <ul className={s.list}>
         {banners.map((e, i) => (
           <li className={s.item} key={i}>
@@ -32,7 +33,7 @@ function PromoBanners() {
           </li>
         ))}
       </ul>
-    </div>
+    </SectionWrapper>
   )
 }
 

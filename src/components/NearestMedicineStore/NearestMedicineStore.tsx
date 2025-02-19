@@ -1,3 +1,4 @@
+import SectionWrapper from '../SectionWrapper/SectionWrapper.tsx'
 import StoreCard from '../StoreCard/StoreCard.tsx'
 import s from './NearestMedicineStore.module.scss'
 
@@ -93,15 +94,19 @@ function NearestMedicineStore() {
   const randomObjects = getRandomObjects(stores, 6)
 
   return (
-    <div className={s.nearestMedicineStore}>
-      <h2 className={s.title}>Your Nearest Medicine Store</h2>
-      <p className={s.subtitle}>Search for Medicine, Filter by your location</p>
-      <div className={s.boxCards}>
-        {randomObjects.map((e, i) => (
-          <StoreCard key={i} {...e} />
-        ))}
+    <SectionWrapper>
+      <div className={s.nearestMedicineStore}>
+        <h2 className={s.title}>Your Nearest Medicine Store</h2>
+        <p className={s.subtitle}>
+          Search for Medicine, Filter by your location
+        </p>
+        <div className={s.boxCards}>
+          {randomObjects.map((e, i) => (
+            <StoreCard key={i} {...e} />
+          ))}
+        </div>
       </div>
-    </div>
+    </SectionWrapper>
   )
 }
 
