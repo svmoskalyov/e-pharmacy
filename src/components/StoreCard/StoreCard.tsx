@@ -10,7 +10,7 @@ interface StoreCardProps {
   address: string
   phone: string
   open: boolean
-  website: string
+  website?: string
 }
 
 function StoreCard({
@@ -57,7 +57,7 @@ function StoreCard({
       {place && (
         <div className={s.footer}>
           <ButtonLink
-            to={website}
+            to={website || '#'}
             variant={'contained'}
             target="_blank"
             rel="noopener noreferrer"
