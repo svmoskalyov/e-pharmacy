@@ -3,8 +3,6 @@
   display: grid;
   grid:
     "header" 84px "main" 1fr "footer" 334px / 1fr;
-  // margin: 0 auto;
-  // padding: 0 20px;
   max-width: 1980px;
   min-width: 320px;
   height: 100vh;
@@ -12,5 +10,4 @@
 
 .main {
   grid-area: main;
-  outline: 1px solid blue;
 }
