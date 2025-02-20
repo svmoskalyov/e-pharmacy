@@ -3,6 +3,7 @@ import logow2x from '../../../assets/images/logo-w2x.png'
 import logog1x from '../../../assets/images/logo-g1x.png'
 import logog2x from '../../../assets/images/logo-g2x.png'
 import s from './Logo.module.scss'
+import { NavLink } from 'react-router'
 
 type LogoProps = {
   place?: string
@@ -10,7 +11,7 @@ type LogoProps = {
 
 function Logo({ place }: LogoProps) {
   return (
-    <div className={s.logo}>
+    <NavLink to="/home" className={s.logo}>
       <div
         className={s.img}
         style={
@@ -31,7 +32,7 @@ function Logo({ place }: LogoProps) {
       >
         E-Pharmacy
       </span>
-    </div>
+    </NavLink>
   )
 }
 
