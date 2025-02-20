@@ -1,4 +1,70 @@
 .footer {
   grid-area: footer;
-  outline: 1px solid green;
+  padding: 20px;
+  color: var(--bg);
+  background-color: var(--accent);
+}
+
+.footerTop {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.text {
+  width: 274px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.footerBody {}
+
+.navList {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 80px;
+}
+
+.navItem {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.navLink {}
+
+.socialList {}
+
+.socialItem {}
+
+.socialLink {}
+
+.line {
+  display: block;
+  margin-bottom: 20px;
+  height: 1px;
+  background-color: var(--bg);
+}
+
+.bottomList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bottomItem {
+  font-size: 10px;
+  line-height: 10px;
+  text-wrap: nowrap;
+}
+
+.bottomItem:nth-child(2) {
+  padding: 0 10px;
+  border-left: 1px solid var(--bg);
+  border-right: 1px solid var(--bg);
+
+}
+
+.bottomLink {
 }
