@@ -1,0 +1,26 @@
+.features {
+  margin-bottom: 40px;
+  width: 100vw;
+  overflow: hidden;
+
+}
+
+.list {
+  display: flex;
+  gap: 48px;
+}
+
+.item {
+  display: flex;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.02px;
+  color: var(--text-primary);
+  text-wrap: nowrap;
+}
