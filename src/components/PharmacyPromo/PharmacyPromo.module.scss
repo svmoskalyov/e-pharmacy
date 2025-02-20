@@ -1,0 +1,40 @@
+@use '../../scss/utils/mixins' as *;
+
+.pharmacyPromo {
+  padding: 20px;
+  background-color: var(--accent);
+  border-radius: 32px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0 40px;
+  height: 280px;
+  color: #f1f1f1;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.2px;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.image {
+  height: 335px;
+  background-image: url('../../assets/images/promo-m1x-min.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include retina {
+    background-image: url('../../assets/images/promo-m2x-min.jpg');
+  }
+}
