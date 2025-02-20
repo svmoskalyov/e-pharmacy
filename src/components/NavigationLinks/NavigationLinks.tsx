@@ -6,7 +6,7 @@ type ActiveLink = {
 }
 
 interface NavigationLinksProps {
-  onClose: () => void
+  onClose?: () => void
 }
 
 const setActive = ({ isActive }: ActiveLink) =>
