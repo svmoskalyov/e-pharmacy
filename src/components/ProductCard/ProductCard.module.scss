@@ -1,0 +1,49 @@
+.productCard {}
+
+.image {
+  margin-bottom: 8px;
+  height: 300px;
+  width: 335px;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  border: 1px solid #59b17a99;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  height: 135px;
+  background-color: var(--text-secondary);
+  border-radius: 20px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--text-primary);
+}
+
+.price {
+  @extend .name;
+}
+
+.rupee {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.suppliers {
+  font-size: 12px;
+  line-height: 28px;
+  color: var(--text-muted);
+}
