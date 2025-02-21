@@ -1,0 +1,19 @@
+.medicineStorePage {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--text-primary);
+}
+
+.boxCards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
