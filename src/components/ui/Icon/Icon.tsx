@@ -4,16 +4,18 @@ type IconProps = {
   name: string
   size: string
   color?: string
+  rotate?: string
 }
 
-function Icon({ name, size, color = '#fff' }: IconProps) {
+function Icon({ name, size, color = '#fff', rotate = '0' }: IconProps) {
   return (
     <svg
       style={{
         width: `${size}`,
         height: `${size}`,
         fill: `${color}`,
-        stroke: `${color}`
+        stroke: `${color}`,
+        rotate: `${rotate}deg`
       }}
     >
       <use href={sprite + `#${name}`} />
