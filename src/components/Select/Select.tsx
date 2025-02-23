@@ -13,11 +13,7 @@ interface SelectProps {
   placeholder?: string
 }
 
-function Select({
-  options,
-  onChange,
-  placeholder = 'Виберіть опцію'
-}: SelectProps) {
+function Select({ options, onChange, placeholder = 'Choiced' }: SelectProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedValue, setSelectedValue] = useState<string | null>(null)
 
