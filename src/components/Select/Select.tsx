@@ -41,14 +41,14 @@ function Select({ options, onChange, placeholder = 'Choiced' }: SelectProps) {
       </div>
       {isOpen && (
         <ul className={s.list}>
-          {options.map(option => (
+          {options.map((option, i) => (
             <li
               className={
                 selectedValue === option.value
                   ? `${s.item} ${s.choiced}`
                   : s.item
               }
-              key={option.value}
+              key={i}
               onClick={() => handleOptionClick(option)}
             >
               {option.label}
