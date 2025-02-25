@@ -2,34 +2,48 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  gap: 4px;
 }
 
-.pagination button {
-  padding: 10px 15px;
-  margin: 0 5px;
-  border: 1px solid #ddd;
-  background-color: #f4f4f4;
+.btn {
+  height: 35px;
+  width: 35px;
+  background-color: transparent;
+  border: 2px solid rgb(29, 30, 33, 0.05);
+  border-radius: 60%;
   cursor: pointer;
-  font-size: 14px;
 }
 
-.pagination button:hover {
-  background-color: #e0e0e0;
+.btnChevron {
+  @extend .btn;
+  border: 2px solid rgb(29, 30, 33, 0.2);
+  fill: var(--text-primary);
 }
 
-.pagination button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.btnChevron:disabled {
+  border: 2px solid rgb(29, 30, 33, 0.05);
+  fill: var(--text-muted);
+  cursor: default;
 }
 
-.pagination button.active {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
+.btnPage {
+  @extend .btn;
+  font-weight: 700;
+  line-height: 18px;
 }
 
-.pagination .dots {
-  padding: 10px 15px;
-  font-size: 14px;
+.active {
+  background-color: var(--accent);
+  color: var(--text-secondary);
+  border: none;
+}
+
+.dots {
+  @extend .btn;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  cursor: default;
+  user-select: none;
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import IconChevron from '../ui/IconChevron'
 import s from './Pagination.module.scss'
 
 interface PaginationProps {
@@ -60,23 +61,33 @@ function Pagination({
 
   return (
     <div className={s.pagination}>
-      <button onClick={() => handlePageClick(1)} disabled={currentPage === 1}>
-        Перша
-      </button>
       <button
-        onClick={() => handlePageClick(currentPage - 1)}
+        className={s.btnChevron}
+        onClick={() => handlePageClick(1)}
         disabled={currentPage === 1}
       >
-        Попередня
+        <IconChevron count={2} look="left" />
+      </button>
+      <button
+        className={s.btnChevron}
+        onClick={() => handlePageClick(currentPage - 1)}
+        disabled={currentPage === 1}
+        style={{ marginRight: '17px' }}
+      >
+        <IconChevron count={1} look="left" />
       </button>
       {displayedPages.map((page, index) => (
         <div key={index}>
           {page === 0 ? (
-            <span>...</span>
+            <span className={s.dots}>...</span>
           ) : (
             <button
               onClick={() => handlePageClick(page)}
-              className={currentPage === page ? `${s.active}` : ''}
+              className={
+                currentPage === page
+                  ? `${s.btnPage} ${s.active}`
+                  : `${s.btnPage}`
+              }
             >
               {page}
             </button>
@@ -84,16 +95,19 @@ function Pagination({
         </div>
       ))}
       <button
+        className={s.btnChevron}
         onClick={() => handlePageClick(currentPage + 1)}
         disabled={currentPage === totalPages}
+        style={{ marginLeft: '17px' }}
       >
-        Наступна
+        <IconChevron count={1} look="right" />
       </button>
       <button
+        className={s.btnChevron}
         onClick={() => handlePageClick(totalPages)}
         disabled={currentPage === totalPages}
       >
-        Остання
+        <IconChevron count={2} look="right" />
       </button>
     </div>
   )
