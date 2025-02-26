@@ -1,0 +1,20 @@
+.productQuantity {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 44px;
+  width: 108px;
+  background-color: transparent;
+  border-radius: 60px;
+  border: 2px solid rgb(29, 30, 33, 0.1);
+}
+
+.btn {
+  display: inline-flex;
+}
+
+.quantity {
+  font-size: 16px;
+  color: var(--text-primary);
+}
