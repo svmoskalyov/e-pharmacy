@@ -18,7 +18,7 @@ function App() {
         <Route path="login" element={<LoginPage />} />
         <Route path="medicine-store" element={<MedicineStorePage />} />
         <Route path="medicine" element={<MedicinePage />} />
-        <Route path="product" element={<ProductPage />} />
+        <Route path="product/:prodId" element={<ProductPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
