@@ -5,12 +5,14 @@
   gap: 8px;
   padding: 0;
   font-size: 14px;
+  font-weight: 500;
   line-height: 100%;
   text-align: center;
   text-decoration: none;
   text-wrap: nowrap;
   color: var(--text-secondary);
   background-color: transparent;
+  border-radius: 60px;
   border: none;
 
   &:disabled {
@@ -19,7 +21,6 @@
 
   &.contained {
     background-color: var(--accent);
-    border-radius: 60px;
     transition: background-color 0.25s;
 
     &:hover {
@@ -28,20 +29,13 @@
   }
 
   &.outlined {
-    background-color: var(--accent);
+    font-weight: 400;
     border: 1px solid #f1f1f1;
-    border-radius: 60px;
-    transition: background-color 0.25s;
-
-    &:hover {
-      background-color: var(--darkened);
-    }
   }
 
   &.dangered {
     color: var(--danger);
     background-color: var(--danger-bg);
-    border-radius: 60px;
     transition: background-color 0.25s, color 0.25s;
 
     &:hover {
