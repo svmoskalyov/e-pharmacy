@@ -1,3 +1,4 @@
+import Icon from '../ui/Icon'
 import s from './Rating.module.scss'
 
 interface RatingProps {
@@ -17,7 +18,7 @@ function Rating({ initialRating }: RatingProps) {
             initialRating >= star ? `${s.star} ${s.filled}` : `${s.star}`
           }
         >
-          ★
+          <Icon name="star" size="16" color="var(--star)" />
         </span>
       ))}
       <span className={s.value}>{initialRating}</span>
