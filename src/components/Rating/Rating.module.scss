@@ -1,9 +1,11 @@
 .rating {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 10px;
 }
 
 .star {
+  display: inline-flex;
   font-size: 2rem;
   color: #ddd;
 }
@@ -13,6 +15,6 @@
 }
 
 .value {
-  margin-left: 10px;
   font-size: 16px;
+  font-weight: 500;
 }
