@@ -1,0 +1,58 @@
+.productReviewsCard {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 213px;
+  width: 295px;
+  padding: 14px 28px;
+  background-color: var(--text-secondary);
+  border: 1px solid #f1f1f1;
+  border-radius: 20px;
+}
+
+.info {
+  display: flex;
+    justify-content: space-between;
+}
+
+.item {
+  display: flex;
+}
+
+.item:first-child {
+gap: 20px;
+}
+
+.item:last-child {
+align-items: flex-start;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  width: 110px;
+  font-size: 16;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+}
+
+.date {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--text-muted);
+}
+
+.comment {
+  font-size: 14px;
+  line-height: 18px;
+  color: #6A6A6F;
+  overflow: hidden;
+}
