@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import s from './ProductInfo.module.scss'
 import ProductReviewsCard from '../ProductReviewsCard'
+import s from './ProductInfo.module.scss'
 
 type ReviewsObject = {
   name: string
@@ -42,7 +42,7 @@ function ProductInfo({ description, reviews }: ProductInfoProps) {
         </button>
       </div>
       <div className={s.infoContainer}>
-        {isActive && <p>{description}</p>}
+        {isActive && <p className={s.description}>{description}</p>}
         {!isActive && (
           <ul className={s.reviewsList}>
             {reviews.map((e, i) => (

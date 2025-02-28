@@ -28,6 +28,10 @@
   }
 }
 
+.description {
+  overflow: hidden;
+}
+
 .reviewsList {
   display: flex;
   flex-direction: column;
