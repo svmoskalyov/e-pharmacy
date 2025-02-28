@@ -14,9 +14,16 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  height: 135px;
   background-color: var(--text-secondary);
   border-radius: 20px;
+}
+
+.med {
+  height: 135px;
+}
+
+.prod {
+  height: 160px;
 }
 
 .item {
@@ -37,7 +44,7 @@
 }
 
 .rupee {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 900;
   color: var(--text-primary);
 }
