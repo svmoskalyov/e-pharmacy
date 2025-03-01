@@ -25,7 +25,13 @@ function RadioButton({ options, onChange }: RadioButtonProps) {
             onChange={() => handleOptionChange(option)}
             className={s.radioInput}
           />
-          <span className={s.radioText}>{option}</span>
+          <span
+            className={`${s.radioText} ${
+              selectedValue === option ? s.selected : ''
+            }`}
+          >
+            {option}
+          </span>
         </label>
       ))}
     </div>
