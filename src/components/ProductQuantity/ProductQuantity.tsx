@@ -1,12 +1,16 @@
 import { useState } from 'react'
-import s from './ProductQuantity.module.scss'
 import Icon from '../ui/Icon'
+import s from './ProductQuantity.module.scss'
 
 interface ProductQuantityProps {
+  size?: 'small' | 'medium' | 'large'
   onQuantityChange: (quantity: number) => void
 }
 
-function ProductQuantity({ onQuantityChange }: ProductQuantityProps) {
+function ProductQuantity({
+  size = 'medium',
+  onQuantityChange
+}: ProductQuantityProps) {
   const [currentQuantity, setCurrentQuantity] = useState(1)
 
   const handleIncrement = () => {
@@ -24,11 +28,13 @@ function ProductQuantity({ onQuantityChange }: ProductQuantityProps) {
   }
 
   return (
-    <div className={s.productQuantity}>
+    <div className={`${s.productQuantity}  ${s[`${size}`]}`}>
       <button className={s.btn} onClick={handleDecrement}>
         <Icon name={'minus'} size={'20'} />
       </button>
-      <span className={s.quantity}>{currentQuantity}</span>
+      <span className={`${s.quantity}  ${s[`${size}`]}`}>
+        {currentQuantity}
+      </span>
       <button className={s.btn} onClick={handleIncrement}>
         <Icon name={'plus'} size={'20'} />
       </button>
