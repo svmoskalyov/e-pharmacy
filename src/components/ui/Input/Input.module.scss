@@ -25,6 +25,10 @@
     border-color: var(--accent);
     outline: none;
   }
+
+  &::placeholder {
+    color: var(--plColor) !important;
+  }
 }
 
 .error {

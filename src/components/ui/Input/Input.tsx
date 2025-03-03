@@ -1,8 +1,9 @@
-import { InputHTMLAttributes, ChangeEvent } from 'react'
+import { InputHTMLAttributes, ChangeEvent, CSSProperties } from 'react'
 import s from './Input.module.scss'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
+  placeholdercolor?: string
   error?: string
 }
 
@@ -18,6 +19,7 @@ function Input(props: InputProps) {
       {props.label && <label className={s.label}>{props.label}</label>}
       <input
         {...props}
+        style={{ '--plColor': `${props.placeholdercolor}` } as CSSProperties}
         onChange={handleChange}
         className={`${s.input} ${props.error ? s.error : ''}`}
       />
