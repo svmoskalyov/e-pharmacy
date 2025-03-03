@@ -49,6 +49,7 @@ function DeliveryInfo() {
             label="Name"
             name="name"
             placeholder="Enter text"
+            placeholdercolor="#1d1e2199"
             value={formData.name}
             onChange={handleInputChange}
             error={error}
@@ -58,6 +59,7 @@ function DeliveryInfo() {
             label="Email"
             name="email"
             placeholder="Enter text"
+            placeholdercolor="#1d1e2199"
             value={formData.email}
             onChange={handleInputChange}
             error={error}
@@ -67,6 +69,7 @@ function DeliveryInfo() {
             label="Phone"
             name="phone"
             placeholder="Enter text"
+            placeholdercolor="#1d1e2199"
             value={formData.phone}
             onChange={handleInputChange}
             error={error}
@@ -76,6 +79,7 @@ function DeliveryInfo() {
             label="Address"
             name="address"
             placeholder="Enter text"
+            placeholdercolor="#1d1e2199"
             value={formData.address}
             onChange={handleInputChange}
             error={error}
