@@ -1,22 +1,37 @@
 .decorLines {
   display: inline-flex;
   flex-direction: column;
-  gap: 8px;
   rotate: 22deg;
+
+  &.card {
+    gap: 8px;
+  }
+
+  &.auth {
+    gap: 12px;
+  }
 }
 
-.line {
+.decorLines span {
+  background-color: var(--accent-muted);
+}
+
+.decorLines.card span {
   height: 36px;
   width: 167px;
   border-radius: 20px;
-  background-color: var(--accent-muted);
-
 }
 
-.line:first-child {
+.decorLines.auth span {
+  height: 47px;
+  width: 222px;
+  border-radius: 60px;
+}
+
+.decorLines span:first-child {
   margin-left: 50px;
 }
 
-.line:last-child {
+.decorLines span:last-child {
   margin-left: 40px;
 }

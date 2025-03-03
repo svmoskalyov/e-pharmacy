@@ -1,11 +1,15 @@
 import s from './DecorLines.module.scss'
 
-function DecorLines() {
+interface DecorLinesProps {
+  variant: 'card' | 'auth'
+}
+
+function DecorLines({ variant }: DecorLinesProps) {
   return (
-    <div className={s.decorLines}>
-      <span className={s.line}></span>
-      <span className={s.line}></span>
-      <span className={s.line}></span>
+    <div className={`${s.decorLines} ${s[variant]}`}>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   )
 }
