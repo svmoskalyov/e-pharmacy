@@ -25,7 +25,12 @@ function AuthenticationLinks({ onClose }: AuthenticationLinksProps) {
           <ButtonLink to="register" variant="outlined" onClick={onClose}>
             Register
           </ButtonLink>
-          <ButtonLink to="login" variant="text" onClick={onClose}>
+          <ButtonLink
+            to="login"
+            variant="text"
+            style={{ textDecoration: 'underline' }}
+            onClick={onClose}
+          >
             Login
           </ButtonLink>
         </>
