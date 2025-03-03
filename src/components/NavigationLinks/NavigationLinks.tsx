@@ -13,6 +13,8 @@ const setActive = ({ isActive }: ActiveLink) =>
   isActive ? `${s.navLink} ${s.activeLink}` : `${s.navLink}`
 
 function NavigationLinks({ onClose }: NavigationLinksProps) {
+  const isAuth = false
+
   return (
     <nav className={s.navLinks}>
       <ul className={s.list}>
@@ -26,11 +28,13 @@ function NavigationLinks({ onClose }: NavigationLinksProps) {
             Medicine store
           </NavLink>
         </li>
-        <li className={s.item}>
-          <NavLink to="medicine" className={setActive} onClick={onClose}>
-            Medicine
-          </NavLink>
-        </li>
+        {isAuth && (
+          <li className={s.item}>
+            <NavLink to="medicine" className={setActive} onClick={onClose}>
+              Medicine
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   )
