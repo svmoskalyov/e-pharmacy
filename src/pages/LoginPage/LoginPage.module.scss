@@ -1,0 +1,48 @@
+@use '../../scss/utils/mixins' as *;
+
+.loginPage {
+  position: relative;
+  padding: 80px 20px 190px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.headerBox {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 34px;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+}
+
+.img {
+  position: absolute;
+  top: -54px;
+  right: 20px;
+  height: 93px;
+  width: 95px;
+  background-image: url('../../assets/images/pill-w1x.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include retina {
+    background-image: url('../../assets/images/pill-w2x.png');
+  }
+}
+
+.mark {
+  margin: 0 8px;
+  color: var(--accent);
+}
+
+.decor {
+  position: absolute;
+  right: -104px;
+  bottom: -34px;
+}
