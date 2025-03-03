@@ -51,7 +51,7 @@ function StoreCard({
         </div>
       </div>
       <div className={`${s.decor} ${place ? s['top'] : s['bottom']}`}>
-        <DecorLines />
+        <DecorLines variant='card'/>
       </div>
 
       {place && (
