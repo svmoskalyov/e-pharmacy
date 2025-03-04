@@ -4,10 +4,11 @@ type IconProps = {
   name: string
   size: string
   color?: string
+  sw?: string
   rotate?: string
 }
 
-function Icon({ name, size, color = '#fff', rotate = '0' }: IconProps) {
+function Icon({ name, size, color = '#fff', sw = '2', rotate = '0' }: IconProps) {
   return (
     <svg
       style={{
@@ -15,6 +16,7 @@ function Icon({ name, size, color = '#fff', rotate = '0' }: IconProps) {
         height: `${size}`,
         fill: `${color}`,
         stroke: `${color}`,
+        strokeWidth: `${sw}`,
         rotate: `${rotate}deg`
       }}
     >
