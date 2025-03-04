@@ -1,4 +1,5 @@
 import RegisterForm from '../../components/RegisterForm'
+import ButtonLink from '../../components/ui/ButtonLink'
 import DecorLines from '../../components/ui/DecorLines'
 import s from './RegisterPage.module.scss'
 
@@ -13,6 +14,11 @@ function RegisterPage() {
         <div className={s.img}></div>
       </div>
       <RegisterForm />
+      <div className={s.linkBox}>
+        <ButtonLink to="/login" variant="text" style={{ color: '#1d1e2133' }}>
+          Already have an account?
+        </ButtonLink>
+      </div>
       <div className={s.decor}>
         <DecorLines variant="auth" />
       </div>
