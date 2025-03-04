@@ -1,4 +1,5 @@
 import LoginForm from '../../components/LoginForm'
+import ButtonLink from '../../components/ui/ButtonLink'
 import DecorLines from '../../components/ui/DecorLines'
 import s from './LoginPage.module.scss'
 
@@ -13,6 +14,15 @@ function LoginPage() {
         <div className={s.img}></div>
       </div>
       <LoginForm />
+      <div className={s.linkBox}>
+        <ButtonLink
+          to="/register"
+          variant="text"
+          style={{ color: '#1d1e2133' }}
+        >
+          Don't have an account?
+        </ButtonLink>
+      </div>
       <div className={s.decor}>
         <DecorLines variant="auth" />
       </div>
