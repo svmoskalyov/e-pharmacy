@@ -63,8 +63,8 @@
     <path d="M4 6L8 10L12 6" stroke="#1D1E21" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
   </symbol>
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="close">
-    <path d="M24 8L8 24" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-    <path d="M8 8L24 24" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M24 8L8 24" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M8 8L24 24" stroke-linecap="round" stroke-linejoin="round"></path>
   </symbol>
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" id="facebook">
     <g opacity="0.8">
