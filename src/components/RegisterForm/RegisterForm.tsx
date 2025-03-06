@@ -50,7 +50,7 @@ function RegisterForm() {
     console.log(data)
     const registered = await registerUser(data)
     console.log('🚀 ~ reguser:', registered)
-    
+
     if (registered.success) {
       console.log('🚀 ~ notify-green ~ reguser:', registered.message)
       // navigate('/login')
@@ -62,42 +62,44 @@ function RegisterForm() {
 
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-      <label className={s.label}>
-        <input
-          {...register('name')}
-          className={s.input}
-          placeholder="User Name"
-        />
-        <p className={s.error}>{errors.name?.message}</p>
-      </label>
+      <div className={s.inputsBox}>
+        <label className={s.label}>
+          <input
+            {...register('name')}
+            className={s.input}
+            placeholder="User Name"
+          />
+          <p className={s.error}>{errors.name?.message}</p>
+        </label>
 
-      <label className={s.label}>
-        <input
-          {...register('email')}
-          className={s.input}
-          placeholder="Email address"
-        />
-        <p className={s.error}>{errors.email?.message}</p>
-      </label>
+        <label className={s.label}>
+          <input
+            {...register('email')}
+            className={s.input}
+            placeholder="Email address"
+          />
+          <p className={s.error}>{errors.email?.message}</p>
+        </label>
 
-      <label className={s.label}>
-        <input
-          {...register('phone')}
-          className={s.input}
-          placeholder="Phone number"
-        />
-        <p className={s.error}>{errors.phone?.message}</p>
-      </label>
+        <label className={s.label}>
+          <input
+            {...register('phone')}
+            className={s.input}
+            placeholder="Phone number"
+          />
+          <p className={s.error}>{errors.phone?.message}</p>
+        </label>
 
-      <label className={s.label}>
-        <input
-          {...register('password')}
-          className={s.input}
-          type="password"
-          placeholder="Password"
-        />
-        <p className={s.error}>{errors.password?.message}</p>
-      </label>
+        <label className={s.label}>
+          <input
+            {...register('password')}
+            className={s.input}
+            type="password"
+            placeholder="Password"
+          />
+          <p className={s.error}>{errors.password?.message}</p>
+        </label>
+      </div>
 
       <Button type="submit">{isLoading ? 'Loading...' : 'Register'}</Button>
     </form>
