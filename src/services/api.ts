@@ -14,7 +14,7 @@ interface RegistrationData {
   name: string
   email: string
   password: string
-  phoneNumber: string
+  phone: string
 }
 
 interface RegistrationResult {
@@ -25,7 +25,7 @@ interface RegistrationResult {
 export const registerUser = async (
   data: RegistrationData
 ): Promise<RegistrationResult> => {
-  const { setIsLoading, setError, setUser, setIsAuth } = useAuthStore.getState()
+  const { setIsLoading, setError, setUser } = useAuthStore.getState()
   setIsLoading(true)
   setError(null)
 
@@ -40,22 +40,20 @@ export const registerUser = async (
     await setDoc(doc(db, 'users', user.uid), {
       name: data.name,
       email: data.email,
-      phoneNumber: data.phoneNumber
+      phone: data.phone
     })
 
     const userData = {
       uid: user.uid,
       name: data.name,
       email: data.email,
-      phoneNumber: data.phoneNumber,
-      password: data.password
+      phone: data.phone
     }
-    console.log('userData --', userData)
+    console.log("🚀 ~ userData:", userData)
 
     setUser(userData)
-    setIsAuth(true)
     setIsLoading(false)
-    return { success: true, message: 'Реєстрація успішна!' }
+    return { success: true, message: 'Registration successful!' }
   } catch (error: unknown) {
     if (error instanceof Error) {
       setError(error.message)
