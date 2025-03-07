@@ -1,56 +1,86 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { useNavigate } from 'react-router'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useAuthStore } from '../../stores/authStore'
 import Button from '../ui/Button'
-import Input from '../ui/Input'
 import s from './LoginForm.module.scss'
+import { loginUser } from '../../services/api'
 
 type LoginFormProps = {
   popupAuth?: boolean
 }
 
-function LoginForm({ popupAuth }: LoginFormProps) {
-  const [error, setError] = useState('')
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  })
+interface LoginFormValues {
+  email: string
+  password: string
+}
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: value
-    }))
+const schema = yup.object().shape({
+  email: yup
+    .string()
+    .email('invalid format')
+    .min(3)
+    .max(64)
+    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'invalid format')
+    .required('email is required'),
+  password: yup
+    .string()
+    .min(8, 'password must contain at least 8 characters')
+    .required('password is required')
+})
+
+function LoginForm({ popupAuth }: LoginFormProps) {
+  const {
+    reset,
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<LoginFormValues>({
+    resolver: yupResolver(schema)
+  })
+  const navigate = useNavigate()
+  const { isLoading, error } = useAuthStore()
+
+  if (error !== null) {
+    console.log('error notify --', error)
   }
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
-    console.log('Data form:', formData)
-    if (formData.email === '') setError('name is not empty')
+  const onSubmit: SubmitHandler<LoginFormValues> = async data => {
+    const logined = await loginUser(data)
+    if (logined.success) {
+      console.log('🚀 ~ notify-green ~ logined:', logined.message)
+      navigate('/')
+      reset()
+    } else {
+      console.log('🚀 ~ notify-red ~ logined:', logined.message)
+    }
   }
 
   return (
-    <form className={s.form} onSubmit={handleSubmit}>
+    <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={s.inputsBox} style={{ height: popupAuth ? '' : '206px' }}>
-        <Input
-          type="email"
-          name="email"
-          placeholder="Email address"
-          placeholdercolor="#1d1e2166"
-          value={formData.email}
-          onChange={handleInputChange}
-          error={error}
-        />
-        <Input
-          type="password"
-          name="password"
-          placeholder="Password"
-          placeholdercolor="#1d1e2166"
-          value={formData.password}
-          onChange={handleInputChange}
-          error={error}
-        />
+        <label className={s.label}>
+          <input
+            {...register('email')}
+            className={s.input}
+            placeholder="Email address"
+          />
+          <p className={s.error}>{errors.email?.message}</p>
+        </label>
+
+        <label className={s.label}>
+          <input
+            {...register('password')}
+            className={s.input}
+            type="password"
+            placeholder="Password"
+          />
+          <p className={s.error}>{errors.password?.message}</p>
+        </label>
       </div>
-      <Button type="submit">Log in</Button>
+
+      <Button type="submit">{isLoading ? 'Loading...' : 'Log in'}</Button>
     </form>
   )
 }

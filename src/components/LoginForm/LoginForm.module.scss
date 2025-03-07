@@ -9,5 +9,38 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 26px;
+  margin-bottom: 20px;
+}
+
+.label {
+  position: relative;
+}
+
+.input {
+  padding: 0 18px;
+  height: 44px;
+  width: 100%;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--text-primary);
+  border: 1px solid rgb(29, 30, 33, 0.2);
+  border-radius: 60px;
+  transition: border-color 0.25s ease;
+
+  &:focus {
+    border-color: var(--accent);
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #1d1e2166;
+  }
+}
+
+.error {
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  font-size: 12px;
+  color: var(--danger);
 }
