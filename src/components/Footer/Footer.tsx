@@ -38,17 +38,17 @@ function Footer() {
         {!mobile && (
           <ul className={s.socialList}>
             <li className={s.socialItem}>
-              <Link to="#" className={s.socialLink}>
+              <Link to="https://www.facebook.com" className={s.socialLink}>
                 <Icon name="facebook" size="28" />
               </Link>
             </li>
             <li className={s.socialItem}>
-              <Link to="#" className={s.socialLink}>
+              <Link to="https://www.instagram.com" className={s.socialLink}>
                 <Icon name="instagram" size="28" />
               </Link>
             </li>
             <li className={s.socialItem}>
-              <Link to="#" className={s.socialLink}>
+              <Link to="https://www.youtube.com" className={s.socialLink}>
                 <Icon name="youtube" size="28" />
               </Link>
             </li>
