@@ -2,10 +2,10 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 interface User {
-  uid: string
-  name: string
+  uid?: string
+  name?: string
   email: string
-  phone: string
+  phone?: string
 }
 
 interface AuthState {
