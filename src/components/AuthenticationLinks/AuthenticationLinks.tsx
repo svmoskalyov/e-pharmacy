@@ -1,3 +1,5 @@
+import { logoutUser } from '../../services/api'
+import { useAuthStore } from '../../stores/authStore'
 import Button from '../ui/Button'
 import ButtonLink from '../ui/ButtonLink'
 import s from './AuthenticationLinks.module.scss'
@@ -7,17 +9,22 @@ interface AuthenticationLinksProps {
 }
 
 function AuthenticationLinks({ onClose }: AuthenticationLinksProps) {
-  const isAuth = false
+  const { isAuth } = useAuthStore()
 
-  const handlerLogOut = () => {
-    console.log('Log out')
-    onClose()
+  const handleLogout = async () => {
+    const logouted = await logoutUser()
+    if (logouted.success) {
+      onClose()
+      console.log('🚀 ~ notify-green ~ reguser:', logouted.message)
+    } else {
+      console.log('🚀 ~ notify-red ~ reguser:', logouted.message)
+    }
   }
 
   return (
     <div className={s.AuthenticationLinks}>
       {isAuth ? (
-        <Button variant="outlined" onClick={handlerLogOut}>
+        <Button variant="outlined" onClick={handleLogout}>
           Log out
         </Button>
       ) : (

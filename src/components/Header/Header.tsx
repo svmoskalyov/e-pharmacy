@@ -1,5 +1,6 @@
 import { CSSProperties, useState } from 'react'
 import { useLocation } from 'react-router'
+import { useAuthStore } from '../../stores/authStore'
 import Logo from '../ui/Logo'
 import Icon from '../ui/Icon'
 import Drawer from '../Drawer'
@@ -12,9 +13,10 @@ import s from './Header.module.scss'
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const { pathname } = useLocation()
+  const { isAuth } = useAuthStore()
+
   let place = ''
   const toggleDrawer = () => setIsOpen(!isOpen)
-  const isAuth = false
 
   if (pathname === '/' || pathname === '/home') {
     place = 'home'

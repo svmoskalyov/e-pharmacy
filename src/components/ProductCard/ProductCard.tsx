@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router'
+import { useAuthStore } from '../../stores/authStore'
 import Button from '../ui/Button'
 import ButtonLink from '../ui/ButtonLink'
-import s from './ProductCard.module.scss'
 import ProductQuantity from '../ProductQuantity'
 import Backdrop from '../Backdrop'
 import AuthPopup from '../AuthPopup/AuthPopup'
+import s from './ProductCard.module.scss'
 
 interface ProductProps {
   id: string
@@ -28,7 +29,7 @@ function ProductCard({
   // const [prodQuantity, setProdQuantity] = useState<number>(parseInt(stock, 10))
   const [prodInCart, setProdInCart] = useState(0)
   const [showBackdrop, setShowBackdrop] = useState(false)
-  const isAuth = false
+  const { isAuth } = useAuthStore()
 
   const place = pathname === '/medicine' ? true : false
   // console.log(place)

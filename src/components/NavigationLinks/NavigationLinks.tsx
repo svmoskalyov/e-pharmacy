@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router'
+import { useAuthStore } from '../../stores/authStore'
 import s from './NavigationLinks.module.scss'
 
 type ActiveLink = {
@@ -13,7 +14,7 @@ const setActive = ({ isActive }: ActiveLink) =>
   isActive ? `${s.navLink} ${s.activeLink}` : `${s.navLink}`
 
 function NavigationLinks({ onClose }: NavigationLinksProps) {
-  const isAuth = false
+  const { isAuth } = useAuthStore()
 
   return (
     <nav className={s.navLinks}>

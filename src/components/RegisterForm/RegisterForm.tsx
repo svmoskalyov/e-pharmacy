@@ -39,7 +39,7 @@ function RegisterForm() {
   } = useForm<RegistrationFormValues>({
     resolver: yupResolver(schema)
   })
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   const { isLoading, error } = useAuthStore()
 
   if (error !== null) {
@@ -47,13 +47,10 @@ function RegisterForm() {
   }
 
   const onSubmit: SubmitHandler<RegistrationFormValues> = async data => {
-    console.log(data)
     const registered = await registerUser(data)
-    console.log('🚀 ~ reguser:', registered)
-
     if (registered.success) {
       console.log('🚀 ~ notify-green ~ reguser:', registered.message)
-      // navigate('/login')
+      navigate('/login')
       reset()
     } else {
       console.log('🚀 ~ notify-red ~ reguser:', registered.message)
