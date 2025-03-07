@@ -1,5 +1,6 @@
 import { lazy } from 'react'
 import { Navigate, Route, Routes } from 'react-router'
+import { useAuthStore } from './stores/authStore'
 import SharedLayout from './layouts/SharedLayout'
 import HomePage from './pages/HomePage'
 
@@ -11,7 +12,7 @@ const ProductPage = lazy(() => import('./pages/ProductPage'))
 const CartPage = lazy(() => import('./pages/CartPage'))
 
 function App() {
-  const isAuth = false
+  const { isAuth } = useAuthStore()
 
   return (
     <Routes>
