@@ -37,7 +37,7 @@ function Header() {
         <Logo place={place} />
 
         <div className={s.actions}>
-          {isAuth && (
+          {isAuth && place !== 'home' && (
             <>
               <Cart count={0} />
               <Avatar name="John Doe" />
