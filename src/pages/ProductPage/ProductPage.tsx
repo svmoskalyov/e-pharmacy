@@ -33,7 +33,7 @@ const products: Product[] = [
     price: '89.66',
     category: 'Medicine',
     description:
-      'description product ... description product description product description product description product description product description product description product description product description product',
+      'description product ... desc product',
     reviews: [
       {
         name: 'Horeo Bobadgghhhhhhhhh wqdgrehrtj',
