@@ -8,9 +8,11 @@ import {
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore'
 import './firebaseConfig'
 import { useAuthStore } from '../stores/authStore'
+import { get, getDatabase, ref } from 'firebase/database'
 
 const auth = getAuth()
-const db = getFirestore()
+const store = getFirestore()
+const db = getDatabase()
 
 interface LoginData {
   email: string
@@ -45,7 +47,7 @@ export const registerUser = async ({
     )
     const user = userCredential.user
 
-    await setDoc(doc(db, 'users', user.uid), {
+    await setDoc(doc(store, 'users', user.uid), {
       name,
       email,
       phone
@@ -80,7 +82,7 @@ export const loginUser = async ({
     )
     const user = userCredential.user
 
-    const userDoc = await getDoc(doc(db, 'users', user.uid))
+    const userDoc = await getDoc(doc(store, 'users', user.uid))
     if (userDoc.exists()) {
       setUser({
         uid: user.uid,
@@ -126,5 +128,24 @@ export const logoutUser = async (): Promise<InfoResult> => {
       setError('An unknown error occurred')
       return { success: false, message: 'An unknown error occurred' }
     }
+  }
+}
+
+export const fetchData = async <T>(path: string): Promise<T[]> => {
+  const dataRef = ref(db, path)
+  try {
+    const snapshot = await get(dataRef)
+    const data = snapshot.val()
+    if (data) {
+      return Object.entries(data).map(([id, item]) => ({
+        id,
+        ...(item as unknown as Omit<T, 'id'>)
+      })) as T[]
+    } else {
+      return []
+    }
+  } catch (error) {
+    console.error(`Error retrieving data from ${path}:`, error)
+    return []
   }
 }
