@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router'
 import { useAuthStore } from '../../stores/authStore'
+import { useCartStore } from '../../stores/cartStore'
 import Button from '../ui/Button'
 import ButtonLink from '../ui/ButtonLink'
 import ProductQuantity from '../ProductQuantity'
@@ -17,20 +18,19 @@ interface ProductProps {
   stock: string
 }
 
-function ProductCard({
-  id,
-  photo,
-  name,
-  suppliers,
-  price,
-  stock
-}: ProductProps) {
-  const { pathname } = useLocation()
-  const [prodInCart, setProdInCart] = useState(0)
-  const [showBackdrop, setShowBackdrop] = useState(false)
-  const { isAuth } = useAuthStore()
+interface ProductCardProps {
+  product: ProductProps
+}
 
-  const place = pathname === '/medicine' ? true : false
+function ProductCard({ product }: ProductCardProps) {
+  const { id, photo, name, suppliers, price, stock } = product
+  const { pathname } = useLocation()
+  const [prodInCart, setProdInCart] = useState<number>(1)
+  const [showBackdrop, setShowBackdrop] = useState<boolean>(false)
+  const { isAuth } = useAuthStore()
+  const { cart, setCart } = useCartStore()
+
+  const place = pathname === '/medicine'
   const prodQuantity = parseInt(stock, 10)
 
   const handleBackdropClick = () => {
@@ -40,10 +40,16 @@ function ProductCard({
   const addToCart = () => {
     if (!isAuth) setShowBackdrop(true)
 
-    console.log('add to cart id --', id)
-    console.log('state in stock --', stock)
-    console.log('add to cart prodInCart --', prodInCart)
-    console.log('change in stock --', prodQuantity - prodInCart)
+    const findItem = cart.find(obj => obj.id === id) ? true : false
+    if (findItem) {
+      return console.log(
+        '🚀 ~ notify-yellow ~ the product is already in the cart'
+      )
+    } else {
+      console.log('🚀 ~ notify-green ~ product added to cart')
+      const newArr = [...cart, { ...product, buyCount: prodInCart }]
+      setCart(newArr)
+    }
   }
 
   return (
@@ -66,7 +72,7 @@ function ProductCard({
             {!place && (
               <ProductQuantity
                 quantityMax={prodQuantity}
-                onQuantityChange={quantity => setProdInCart(quantity)}
+                onQuantityChange={(quantity: number) => setProdInCart(quantity)}
               />
             )}
 
@@ -74,6 +80,7 @@ function ProductCard({
               variant="contained"
               size={place ? 'small' : 'medium'}
               onClick={addToCart}
+              disabled={stock === '0'}
             >
               Add to cart
             </Button>
