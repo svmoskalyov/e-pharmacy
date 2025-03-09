@@ -16,7 +16,7 @@ function ProductPage() {
   return (
     <SectionWrapper>
       <div className={s.productPage}>
-        <ProductCard {...prod} />
+        <ProductCard product={prod} />
         <ProductInfo {...prod} />
       </div>
     </SectionWrapper>
