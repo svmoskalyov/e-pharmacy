@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ProductReviewsCard from '../ProductReviewsCard'
 import Pagination from '../Pagination'
 import s from './ProductInfo.module.scss'
@@ -32,6 +32,10 @@ function ProductInfo({ description, reviews }: ProductInfoProps) {
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <>
@@ -67,7 +71,7 @@ function ProductInfo({ description, reviews }: ProductInfoProps) {
           )}
         </div>
       </div>
-      {!isActive && reviews.length >= itemsPerPage && (
+      {!isActive && reviews.length > itemsPerPage && (
         <div style={{ marginTop: '20px' }}>
           <Pagination
             totalPages={totalPages}
