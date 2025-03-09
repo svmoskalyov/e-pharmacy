@@ -1,23 +1,14 @@
+import { useCartStore } from '../../stores/cartStore'
 import CartItem from '../CartItem'
 import s from './CartListItems.module.scss'
 
-interface Cart {
-  id: string
-  photo: string
-  name: string
-  suppliers: string
-  price: string
-}
+function CartListItems() {
+  const { cart } = useCartStore()
 
-interface CartListItemsProps {
-  cartItems: Cart[]
-}
-
-function CartListItems({ cartItems }: CartListItemsProps) {
   return (
     <ul className={s.cartListItems}>
-      {cartItems.map(e => (
-        <CartItem key={e.id} {...e} />
+      {cart.map(e => (
+        <CartItem key={e.id} item={e} />
       ))}
     </ul>
   )
