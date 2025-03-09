@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useCartStore } from '../../stores/cartStore'
 import ProductQuantity from '../ProductQuantity'
 import Button from '../ui/Button'
 import s from './CartItem.module.scss'
@@ -9,11 +10,33 @@ interface CartItem {
   name: string
   suppliers: string
   price: string
+  stock: string
+  buyCount: number
 }
 
-function CartItem({ id, photo, name, suppliers, price }: CartItem) {
-  const [prodInCart, setProdInCart] = useState(0)
-  console.log('change in stock --', prodInCart)
+interface CartItemProps {
+  item: CartItem
+}
+
+function CartItem({ item }: CartItemProps) {
+  const { id, photo, name, suppliers, price, stock, buyCount } = item
+  const [prodInCart, setProdInCart] = useState(buyCount)
+  const { cart, setCart } = useCartStore()
+
+  const prodQuantity = parseInt(stock, 10)
+
+  const removeItemFromCart = (id: string) => {
+    const newArr = cart.filter(obj => obj.id !== id)
+    setCart(newArr)
+  }
+
+  useEffect(() => {
+    if (cart.length === 0 || prodInCart <= 1) return
+    const newArr = cart.map(product =>
+      product.id === id ? { ...product, buyCount: prodInCart } : product
+    )
+    setCart(newArr)
+  }, [prodInCart])
 
   return (
     <li className={s.cartItem}>
@@ -30,12 +53,14 @@ function CartItem({ id, photo, name, suppliers, price }: CartItem) {
         <div className={s.btnBox}>
           <ProductQuantity
             size="small"
+            quantity={buyCount}
+            quantityMax={prodQuantity}
             onQuantityChange={quantity => setProdInCart(quantity)}
           />
           <Button
             variant="dangered"
             size="small"
-            onClick={() => console.log('removeItemFromCart --', id)}
+            onClick={() => removeItemFromCart(id)}
           >
             Remove
           </Button>
