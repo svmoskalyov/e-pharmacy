@@ -9,8 +9,9 @@ type IconChevronProps = {
 function IconChevron({ count = 1, look = 'right' }: IconChevronProps) {
   return (
     <>
-      {Array.from({ length: count }).map(() => (
+      {Array.from({ length: count }).map((_, i) => (
         <svg
+          key={i}
           className={s.icon}
           style={{
             transform: look === 'right' ? '' : 'rotate(180deg)'
