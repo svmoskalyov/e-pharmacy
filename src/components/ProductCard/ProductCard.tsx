@@ -26,28 +26,24 @@ function ProductCard({
   stock
 }: ProductProps) {
   const { pathname } = useLocation()
-  // const [prodQuantity, setProdQuantity] = useState<number>(parseInt(stock, 10))
   const [prodInCart, setProdInCart] = useState(0)
   const [showBackdrop, setShowBackdrop] = useState(false)
   const { isAuth } = useAuthStore()
 
   const place = pathname === '/medicine' ? true : false
-  // console.log(place)
+  const prodQuantity = parseInt(stock, 10)
 
   const handleBackdropClick = () => {
     setShowBackdrop(false)
   }
 
   const addToCart = () => {
+    if (!isAuth) setShowBackdrop(true)
+
     console.log('add to cart id --', id)
     console.log('state in stock --', stock)
     console.log('add to cart prodInCart --', prodInCart)
-    console.log('change in stock --', parseInt(stock, 10) - prodInCart)
-
-    if (!isAuth) {
-      console.log('if isAuth --', isAuth)
-      setShowBackdrop(true)
-    }
+    console.log('change in stock --', prodQuantity - prodInCart)
   }
 
   return (
@@ -69,6 +65,7 @@ function ProductCard({
           <li className={s.item}>
             {!place && (
               <ProductQuantity
+                quantityMax={prodQuantity}
                 onQuantityChange={quantity => setProdInCart(quantity)}
               />
             )}
