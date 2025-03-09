@@ -15,10 +15,6 @@
   border-radius: 60px;
   border: none;
 
-  &:disabled {
-    color: var(--text-primary);
-  }
-
   &.contained {
     background-color: var(--accent);
     transition: background-color 0.25s;
@@ -75,6 +71,16 @@
 
   &.icon {
     margin-right: 18px;
+  }
+
+  &:disabled {
+    color: var(--text-primary);
+    background-color: var(--accent-muted);
+
+    &:hover {
+      background-color: var(--accent-muted);
+      cursor: default;
+    }
   }
 }
 
