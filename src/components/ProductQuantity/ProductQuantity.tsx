@@ -4,16 +4,18 @@ import s from './ProductQuantity.module.scss'
 
 interface ProductQuantityProps {
   size?: 'small' | 'medium' | 'large'
+  quantity?: number
   quantityMax: number
   onQuantityChange: (quantity: number) => void
 }
 
 function ProductQuantity({
   size = 'medium',
+  quantity = 1,
   quantityMax,
   onQuantityChange
 }: ProductQuantityProps) {
-  const [currentQuantity, setCurrentQuantity] = useState(1)
+  const [currentQuantity, setCurrentQuantity] = useState(quantity)
 
   const handleIncrement = () => {
     if (currentQuantity < quantityMax) {
