@@ -1,67 +1,10 @@
 import { useEffect, useState } from 'react'
+import { useProductStore } from '../../stores/productStore'
 import SectionWrapper from '../../components/SectionWrapper'
 import Pagination from '../../components/Pagination'
 import ProductsFilter from '../../components/ProductsFilter'
 import ProductCard from '../../components/ProductCard'
 import s from './MedicinePage.module.scss'
-
-interface Product {
-  id: string
-  photo: string
-  name: string
-  suppliers: string
-  stock: string
-  price: string
-  category: string
-}
-
-const products: Product[] = [
-  {
-    id: '0',
-    photo: 'https://i.ibb.co/bLKP624/5-15-1000x1000-min.jpg',
-    name: 'Aspirin',
-    suppliers: 'Square',
-    stock: '12',
-    price: '89.66',
-    category: 'Medicine'
-  },
-  {
-    id: '1',
-    photo: 'https://i.ibb.co/Hg0zZkQ/shop-4-7-1000x1000-min.jpg',
-    name: 'Paracetamol',
-    suppliers: 'Acme',
-    stock: '19',
-    price: '34.16',
-    category: 'Heart'
-  },
-  {
-    id: '2',
-    photo: 'https://i.ibb.co/02WmJdc/5-19-1000x1000-min.jpg',
-    name: 'Ibuprofen',
-    suppliers: 'Beximco',
-    stock: '09',
-    price: '53.76',
-    category: 'Head'
-  },
-  {
-    id: '3',
-    photo: 'https://i.ibb.co/GxTVSVk/shop-4-9-1000x1000-min.jpg',
-    name: 'Acetaminophen',
-    suppliers: 'ACI',
-    stock: '14',
-    price: '28.57',
-    category: 'Hand'
-  },
-  {
-    id: '4',
-    photo: 'https://i.ibb.co/X330FTj/shop-4-10-1000x1000-min.jpg',
-    name: 'Naproxen',
-    suppliers: 'Uniliver',
-    stock: '10',
-    price: '56.34',
-    category: 'Medicine'
-  }
-]
 
 interface Category {
   value: string
@@ -77,6 +20,8 @@ function MedicinePage() {
   const [categories, setCategories] = useState<Category[]>([])
   const [filter, setFilter] = useState<Filter>({ category: '', search: '' })
   const [currentPage, setCurrentPage] = useState<number>(1)
+  const products = useProductStore(state => state.products)
+  const fetchProducts = useProductStore(state => state.fetchProducts)
   const itemsPerPage = 12
 
   const filterChoice = (filter: Filter) => {
@@ -102,6 +47,10 @@ function MedicinePage() {
   }
 
   useEffect(() => {
+    if (products.length === 0) fetchProducts()
+  }, [fetchProducts, products.length])
+
+  useEffect(() => {
     const uniqueCategories = products.reduce((acc: Category[], product) => {
       if (!acc.find(prod => prod.value === product.category)) {
         acc.push({ value: product.category, label: product.category })
@@ -110,7 +59,7 @@ function MedicinePage() {
     }, [])
 
     setCategories(uniqueCategories)
-  }, [])
+  }, [products])
 
   return (
     <SectionWrapper>
@@ -123,7 +72,7 @@ function MedicinePage() {
         ) : (
           <ul className={s.productsList}>
             {prodItems.map(item => (
-              <ProductCard key={item.id} {...item} />
+              <ProductCard key={item.id} product={item} />
             ))}
           </ul>
         )}
