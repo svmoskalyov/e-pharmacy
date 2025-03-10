@@ -3,9 +3,9 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useAuthStore } from '../../stores/authStore'
+import { loginUser } from '../../services/api'
 import Button from '../ui/Button'
 import s from './LoginForm.module.scss'
-import { loginUser } from '../../services/api'
 
 type LoginFormProps = {
   popupAuth?: boolean
