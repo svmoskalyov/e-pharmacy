@@ -1,5 +1,4 @@
 .deliveryInfo {
-  height: 1022px;
   padding: 20px 20px 40px;
   border-radius: 27px;
   background-color: var(--text-secondary);
@@ -38,6 +37,49 @@
   gap: 12px;
 }
 
+.label {
+  position: relative;
+
+  &>span {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding-left: 18px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    color: var(--text-primary);
+  }
+}
+
+.input {
+  padding: 0 18px;
+  height: 44px;
+  width: 100%;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--text-primary);
+  border: 1px solid rgb(29, 30, 33, 0.2);
+  border-radius: 60px;
+  transition: border-color 0.25s ease;
+
+  &:focus {
+    border-color: var(--accent);
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #1d1e2166;
+  }
+}
+
+.error {
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  font-size: 12px;
+  color: var(--danger);
+}
+
 .line {
   display: flex;
   height: 1px;
@@ -66,4 +108,63 @@
   font-size: 12px;
   font-weight: 900;
   color: var(--text-primary);
+}
+
+.radioGroup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.radioInput {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  border: 3px solid rgb(18, 20, 23, 0.2);
+  border-radius: 50%;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.25s ease;
+
+  &:checked {
+    border-color: var(--accent);
+  }
+
+  &:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 10px;
+    width: 10px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.radioText {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--text-muted);
+}
+
+.radioInput:checked+.radioText {
+  color: var(--text-primary);
+}
+
+.radioError {
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+  font-size: 12px;
+  color: var(--danger);
 }

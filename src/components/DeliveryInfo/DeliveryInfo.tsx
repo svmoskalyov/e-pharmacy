@@ -1,35 +1,60 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
-import Input from '../ui/Input'
-import s from './DeliveryInfo.module.scss'
-import RadioButton from '../ui/RadioButton'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useCartStore } from '../../stores/cartStore'
 import Button from '../ui/Button'
+import s from './DeliveryInfo.module.scss'
+
+interface DeliveryInfoValue {
+  name: string
+  email: string
+  phone: string
+  address: string
+  paymentMethod: string
+  totalAmount?: number
+}
+
+const schema = yup.object().shape({
+  name: yup.string().min(2).max(32).required('name is required'),
+  email: yup
+    .string()
+    .email('invalid format')
+    .min(3)
+    .max(64)
+    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'invalid format')
+    .required('email is required'),
+  phone: yup.string().min(8).max(18).required('phone is required'),
+  address: yup.string().min(2).max(64).required('address is required'),
+  paymentMethod: yup.string().required('Choice is a required field')
+})
 
 function DeliveryInfo() {
-  const [error, setError] = useState('')
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    option: 'Cash On Delivery'
+  const {
+    reset,
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<DeliveryInfoValue>({
+    resolver: yupResolver(schema)
   })
+  const { cart, setCart } = useCartStore()
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: value
-    }))
-  }
+  const totalAmount = cart
+    .reduce(
+      (total, product) => total + parseFloat(product.price) * product.buyCount,
+      0
+    )
+    .toFixed(2)
 
-  const handleOptionChange = (value: string) => {
-    setFormData({ ...formData, option: value })
-  }
-
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
-    console.log('Data form:', formData)
-    if (formData.name === '') setError('name is not empty')
+  const onSubmit: SubmitHandler<DeliveryInfoValue> = data => {
+    if (totalAmount === '0.00') {
+      return console.log('🚀 ~ notify-red ~ add product to cart')
+    } else {
+      const newData = { ...data, totalAmount }
+      console.log('🚀 ~ notify-red ~ order sended', newData)
+      setCart([])
+      reset()
+    }
   }
 
   return (
@@ -42,48 +67,47 @@ function DeliveryInfo() {
         </p>
       </div>
 
-      <form className={s.form} onSubmit={handleSubmit}>
+      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.inputsBox}>
-          <Input
-            type="text"
-            label="Name"
-            name="name"
-            placeholder="Enter text"
-            placeholdercolor="#1d1e2199"
-            value={formData.name}
-            onChange={handleInputChange}
-            error={error}
-          />
-          <Input
-            type="email"
-            label="Email"
-            name="email"
-            placeholder="Enter text"
-            placeholdercolor="#1d1e2199"
-            value={formData.email}
-            onChange={handleInputChange}
-            error={error}
-          />
-          <Input
-            type="tel"
-            label="Phone"
-            name="phone"
-            placeholder="Enter text"
-            placeholdercolor="#1d1e2199"
-            value={formData.phone}
-            onChange={handleInputChange}
-            error={error}
-          />
-          <Input
-            type="text"
-            label="Address"
-            name="address"
-            placeholder="Enter text"
-            placeholdercolor="#1d1e2199"
-            value={formData.address}
-            onChange={handleInputChange}
-            error={error}
-          />
+          <label className={s.label}>
+            <span>Name</span>
+            <input
+              {...register('name')}
+              className={s.input}
+              placeholder="Enter text"
+            />
+            <p className={s.error}>{errors.name?.message}</p>
+          </label>
+
+          <label className={s.label}>
+            <span>Email</span>
+            <input
+              {...register('email')}
+              className={s.input}
+              placeholder="Enter text"
+            />
+            <p className={s.error}>{errors.email?.message}</p>
+          </label>
+
+          <label className={s.label}>
+            <span>Phone</span>
+            <input
+              {...register('phone')}
+              className={s.input}
+              placeholder="Enter text"
+            />
+            <p className={s.error}>{errors.phone?.message}</p>
+          </label>
+
+          <label className={s.label}>
+            <span>Address</span>
+            <input
+              {...register('address')}
+              className={s.input}
+              placeholder="Enter text"
+            />
+            <p className={s.error}>{errors.address?.message}</p>
+          </label>
         </div>
         <span className={s.line}></span>
 
@@ -95,12 +119,28 @@ function DeliveryInfo() {
             </p>
           </div>
 
-          {/* <div className={s.radioBox}> */}
-          <RadioButton
-            options={['Cash On Delivery', 'Bank']}
-            onChange={handleOptionChange}
-          />
-          {/* </div> */}
+          <div className={s.radioGroup}>
+            <label className={s.radioLabel}>
+              <input
+                {...register('paymentMethod')}
+                type="radio"
+                value="Cash On Delivery"
+                className={s.radioInput}
+              />
+              <span className={s.radioText}>Cash On Delivery</span>
+            </label>
+
+            <label className={s.radioLabel}>
+              <input
+                {...register('paymentMethod')}
+                type="radio"
+                value="Bank"
+                className={s.radioInput}
+              />
+              <span className={s.radioText}>Bank</span>
+            </label>
+            <p className={s.radioError}>{errors.paymentMethod?.message}</p>
+          </div>
         </div>
         <span className={s.line}></span>
 
@@ -112,10 +152,12 @@ function DeliveryInfo() {
               have entered.
             </p>
           </div>
+
           <div className={s.order}>
             <span>Total:</span>
             <span>
-              <span className={s.rupee}>&#x9F3;</span>122.00
+              <span className={s.rupee}>&#x9F3;</span>
+              {totalAmount}
             </span>
           </div>
           <div>
