@@ -28,7 +28,6 @@ function Header() {
   }
 
   useEffect(() => {
-    if (cart.length === 0) return
     const newAmount = cart.reduce(
       (total, product) => total + product.buyCount,
       0
