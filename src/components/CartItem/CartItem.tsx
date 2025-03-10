@@ -31,7 +31,7 @@ function CartItem({ item }: CartItemProps) {
   }
 
   useEffect(() => {
-    if (cart.length === 0 || prodInCart <= 1) return
+    if (cart.length === 0 || prodInCart === 0) return
     const newArr = cart.map(product =>
       product.id === id ? { ...product, buyCount: prodInCart } : product
     )
