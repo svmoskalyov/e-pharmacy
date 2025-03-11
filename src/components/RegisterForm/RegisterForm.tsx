@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { registerUser } from '../../services/api'
 import { useAuthStore } from '../../stores/authStore'
 import Button from '../ui/Button'
+import Spinner from '../ui/Spinner'
 import s from './RegisterForm.module.scss'
 
 interface RegistrationFormValues {
@@ -98,7 +99,7 @@ function RegisterForm() {
         </label>
       </div>
 
-      <Button type="submit">{isLoading ? 'Loading...' : 'Register'}</Button>
+      <Button type="submit">{isLoading ? <Spinner /> : 'Register'}</Button>
     </form>
   )
 }
