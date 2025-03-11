@@ -35,8 +35,8 @@ function App() {
         position="top-center"
         autoClose={3000}
         pauseOnFocusLoss
-        draggable
         pauseOnHover
+        draggable
       />
     </>
   )
