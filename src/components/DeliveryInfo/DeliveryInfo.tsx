@@ -49,7 +49,7 @@ function DeliveryInfo() {
 
   const onSubmit: SubmitHandler<DeliveryInfoValue> = data => {
     if (totalAmount === '0.00') {
-      return toast.error('add product to cart')
+      return toast.warning('add product to cart')
     } else {
       const newData = { ...data, totalAmount }
       console.log('order sended: ', newData)
