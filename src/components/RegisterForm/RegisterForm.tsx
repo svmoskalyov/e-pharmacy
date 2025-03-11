@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { toast } from 'react-toastify'
 import { registerUser } from '../../services/api'
 import { useAuthStore } from '../../stores/authStore'
 import Button from '../ui/Button'
@@ -44,17 +45,17 @@ function RegisterForm() {
   const { isLoading, error } = useAuthStore()
 
   if (error !== null) {
-    console.log('error notify --', error)
+    toast.error(error)
   }
 
   const onSubmit: SubmitHandler<RegistrationFormValues> = async data => {
     const registered = await registerUser(data)
     if (registered.success) {
-      console.log('🚀 ~ notify-green ~ reguser:', registered.message)
+      toast.success(registered.message)
       navigate('/login')
       reset()
     } else {
-      console.log('🚀 ~ notify-red ~ reguser:', registered.message)
+      toast.error(registered.message)
     }
   }
 

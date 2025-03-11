@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router'
+import { toast } from 'react-toastify'
 import { useAuthStore } from '../../stores/authStore'
 import { useCartStore } from '../../stores/cartStore'
 import Button from '../ui/Button'
@@ -42,11 +43,9 @@ function ProductCard({ product }: ProductCardProps) {
 
     const findItem = cart.find(obj => obj.id === id) ? true : false
     if (findItem) {
-      return console.log(
-        '🚀 ~ notify-yellow ~ the product is already in the cart'
-      )
+      return toast.warning('the product is already in the cart')
     } else {
-      console.log('🚀 ~ notify-green ~ product added to cart')
+      toast.success('product added to cart')
       const newArr = [...cart, { ...product, buyCount: prodInCart }]
       setCart(newArr)
     }

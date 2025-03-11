@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { toast } from 'react-toastify'
 import { useCartStore } from '../../stores/cartStore'
 import Button from '../ui/Button'
 import s from './DeliveryInfo.module.scss'
@@ -48,10 +49,11 @@ function DeliveryInfo() {
 
   const onSubmit: SubmitHandler<DeliveryInfoValue> = data => {
     if (totalAmount === '0.00') {
-      return console.log('🚀 ~ notify-red ~ add product to cart')
+      return toast.error('add product to cart')
     } else {
       const newData = { ...data, totalAmount }
-      console.log('🚀 ~ notify-red ~ order sended', newData)
+      console.log('order sended: ', newData)
+      toast.success('order sended')
       setCart([])
       reset()
     }

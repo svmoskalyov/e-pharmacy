@@ -5,3 +5,13 @@ body {
   color: var(--text-primary);
   background-color: var(--bg);
 }
+
+.Toastify__toast {
+  font-size: 18px;
+  color: var(--text-primary);
+  border-radius: 12px;
+}
+
+.Toastify__close-button {
+  opacity: 1;
+}

@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { toast } from 'react-toastify'
 import { useAuthStore } from '../../stores/authStore'
 import { loginUser } from '../../services/api'
 import Button from '../ui/Button'
@@ -44,17 +45,17 @@ function LoginForm({ popupAuth }: LoginFormProps) {
   const { isLoading, error } = useAuthStore()
 
   if (error !== null) {
-    console.log('error notify --', error)
+    toast.error(error)
   }
 
   const onSubmit: SubmitHandler<LoginFormValues> = async data => {
     const logined = await loginUser(data)
     if (logined.success) {
-      console.log('🚀 ~ notify-green ~ logined:', logined.message)
+      toast.success(logined.message)
       navigate('/')
       reset()
     } else {
-      console.log('🚀 ~ notify-red ~ logined:', logined.message)
+      toast.error(logined.message)
     }
   }
 

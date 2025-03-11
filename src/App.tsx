@@ -1,5 +1,6 @@
 import { lazy } from 'react'
 import { Navigate, Route, Routes } from 'react-router'
+import { ToastContainer } from 'react-toastify'
 import { useAuthStore } from './stores/authStore'
 import SharedLayout from './layouts/SharedLayout'
 import HomePage from './pages/HomePage'
@@ -15,19 +16,29 @@ function App() {
   const { isAuth } = useAuthStore()
 
   return (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        <Route index element={<Navigate replace to="home" />} />
-        <Route path="home" element={<HomePage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="medicine-store" element={<MedicineStorePage />} />
-        <Route path="product/:prodId" element={<ProductPage />} />
-        {isAuth && <Route path="medicine" element={<MedicinePage />} />}
-        {isAuth && <Route path="cart" element={<CartPage />} />}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Route>
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Navigate replace to="home" />} />
+          <Route path="home" element={<HomePage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="medicine-store" element={<MedicineStorePage />} />
+          <Route path="product/:prodId" element={<ProductPage />} />
+          {isAuth && <Route path="medicine" element={<MedicinePage />} />}
+          {isAuth && <Route path="cart" element={<CartPage />} />}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   )
 }
 

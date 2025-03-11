@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify'
 import { logoutUser } from '../../services/api'
 import { useAuthStore } from '../../stores/authStore'
 import Button from '../ui/Button'
@@ -15,9 +16,9 @@ function AuthenticationLinks({ onClose }: AuthenticationLinksProps) {
     const logouted = await logoutUser()
     if (logouted.success) {
       onClose()
-      console.log('🚀 ~ notify-green ~ reguser:', logouted.message)
+      toast.success(logouted.message)
     } else {
-      console.log('🚀 ~ notify-red ~ reguser:', logouted.message)
+      toast.error(logouted.message)
     }
   }
 
