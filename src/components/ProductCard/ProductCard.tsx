@@ -38,7 +38,7 @@ function ProductCard({ product }: ProductCardProps) {
   }
 
   const addToCart = () => {
-    if (!isAuth) setShowBackdrop(true)
+    if (!isAuth) return setShowBackdrop(true)
 
     const findItem = cart.find(obj => obj.id === id) ? true : false
     if (findItem) {
