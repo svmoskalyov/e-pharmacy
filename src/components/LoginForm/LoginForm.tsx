@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useAuthStore } from '../../stores/authStore'
 import { loginUser } from '../../services/api'
 import Button from '../ui/Button'
+import Spinner from '../ui/Spinner'
 import s from './LoginForm.module.scss'
 
 type LoginFormProps = {
@@ -80,7 +81,7 @@ function LoginForm({ popupAuth }: LoginFormProps) {
         </label>
       </div>
 
-      <Button type="submit">{isLoading ? 'Loading...' : 'Log in'}</Button>
+      <Button type="submit">{isLoading ? <Spinner /> : 'Log in'}</Button>
     </form>
   )
 }
