@@ -7,6 +7,11 @@
   height: 32px;
   width: 135px;
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    height: 44px;
+    width: 172px;
+  }
 }
 
 .img {
@@ -16,6 +21,11 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
+  @media screen and (min-width: 768px) {
+    height: 44px;
+    width: 44px;
+  }
 
   @include retina {
     background-image: var(--logo2x) !important;
@@ -27,4 +37,8 @@
   font-weight: 600;
   line-height: auto;
   letter-spacing: -0.05px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
 }
