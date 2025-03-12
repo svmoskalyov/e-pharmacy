@@ -4,6 +4,11 @@
   padding: 20px;
   background-color: var(--accent);
   border-radius: 32px;
+
+  @media screen and (min-width: 768px) {
+    padding: 40px;
+    padding-left: 48px;
+  }
 }
 
 .content {
@@ -13,6 +18,12 @@
   padding: 20px 0 40px;
   height: 280px;
   color: #f1f1f1;
+
+  @media screen and (min-width: 768px) {
+    padding: 64px 0 64px;
+    margin-bottom: 19px;
+    height: 406px;
+  }
 }
 
 .title {
@@ -20,11 +31,22 @@
   font-weight: 600;
   line-height: 32px;
   letter-spacing: 0.2px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 48px;
+    line-height: 55px;
+  }
 }
 
 .text {
   font-size: 14px;
   line-height: 18px;
+
+  @media screen and (min-width: 768px) {
+    width: 488px;
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 .image {
@@ -34,7 +56,16 @@
   background-repeat: no-repeat;
   background-position: center;
 
+  @media screen and (min-width: 768px) {
+    height: 406px;
+    background-image: url('../../assets/images/promo-t1x-min.jpg');
+  }
+
   @include retina {
     background-image: url('../../assets/images/promo-m2x-min.jpg');
+
+    @media screen and (min-width: 768px) {
+      background-image: url('../../assets/images/promo-t2x-min.jpg');
+    }
   }
 }
