@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useReviewStore } from '../../stores/reviewStore'
+import useMediaQuery from '../../hooks/useMediaQuery'
 import SectionWrapper from '../SectionWrapper'
 import Avatar from '../ui/Avatar'
 import s from './Reviews.module.scss'
@@ -12,13 +13,19 @@ type Review = {
 function Reviews() {
   const reviews = useReviewStore(state => state.reviews)
   const fetchReviews = useReviewStore(state => state.fetchReviews)
+  const isTablet = useMediaQuery('(min-width: 768px)')
+  const isDesktop = useMediaQuery('(min-width: 1440px)')
+
+  let itemsLimit = 1
+  if (isTablet) itemsLimit = 2
+  if (isDesktop) itemsLimit = 3
 
   const getRandomObjects = (arr: Review[], count: number): Review[] => {
     const shuffled = [...arr].sort(() => Math.random() - 0.5)
     return shuffled.slice(0, count)
   }
 
-  const randomObjects = getRandomObjects(reviews, 1)
+  const randomObjects = getRandomObjects(reviews, itemsLimit)
 
   useEffect(() => {
     if (reviews.length === 0) fetchReviews()
