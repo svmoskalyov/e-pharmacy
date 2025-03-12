@@ -7,6 +7,11 @@
   height: 728px;
   color: var(--text-secondary);
   background-color: var(--accent);
+
+  @media screen and (min-width: 768px) {
+    height: 924px;
+    padding: 0 32px;
+  }
 }
 
 .box {
@@ -20,6 +25,10 @@
   @include retina {
     background-image: url('../../assets/images/pill-wg2x.png');
   }
+
+  @media screen and (min-width: 768px) {
+    height: 508px;
+  }
 }
 
 .title {
@@ -28,6 +37,13 @@
   font-weight: 600;
   line-height: 50px;
   letter-spacing: 2px;
+
+  @media screen and (min-width: 768px) {
+    padding: 140px 0 24px 80px;
+    font-size: 74px;
+    line-height: 74px;
+  }
+
 }
 
 .subtitle {
@@ -35,4 +51,11 @@
   width: 156px;
   font-size: 12px;
   line-height: 16px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 50px;
+    width: 207px;
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
