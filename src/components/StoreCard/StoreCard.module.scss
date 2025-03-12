@@ -10,6 +10,12 @@
   border-radius: 27px;
   overflow: hidden;
 
+  @media screen and (min-width: 768px) {
+    padding: 40px;
+    height: 232px;
+    width: 344px;
+  }
+
   &.plc {
     justify-content: space-between;
     height: 232px;
@@ -19,6 +25,11 @@
 .header {
   margin-bottom: 32px;
   width: 123px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+    width: 150px;
+  }
 
   &.plc {
     margin-bottom: 0;
@@ -35,6 +46,11 @@
   text-wrap: nowrap;
   text-overflow: ellipsis;
   user-select: none;
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    line-height: 28px;
+  }
 }
 
 .body {
@@ -50,6 +66,11 @@
   font-size: 14px;
   line-height: 18px;
   color: var(--text-muted);
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 .footer {
@@ -66,12 +87,24 @@
   height: 34px;
   width: 110px;
 
+  @media screen and (min-width: 768px) {
+    right: 24px;
+  }
+
   &.top {
     top: 32px;
+
+    @media screen and (min-width: 768px) {
+      top: 40px;
+    }
   }
 
   &.bottom {
     bottom: 32px;
+
+    @media screen and (min-width: 768px) {
+      bottom: 40px;
+    }
   }
 }
 
