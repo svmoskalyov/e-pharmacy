@@ -6,6 +6,11 @@
   max-width: 1980px;
   min-width: 320px;
   height: 100vh;
+
+  @media screen and (min-width: 768px) {
+    grid:
+      "header" 100px "main" 1fr var(--footer) / 1fr;
+  }
 }
 
 .main {
