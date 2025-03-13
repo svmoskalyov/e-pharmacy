@@ -8,6 +8,7 @@ import { loginUser } from '../../services/api'
 import Button from '../ui/Button'
 import Spinner from '../ui/Spinner'
 import s from './LoginForm.module.scss'
+import useMediaQuery from '../../hooks/useMediaQuery'
 
 type LoginFormProps = {
   popupAuth?: boolean
@@ -43,6 +44,7 @@ function LoginForm({ popupAuth }: LoginFormProps) {
   })
   const navigate = useNavigate()
   const { isLoading, error } = useAuthStore()
+  const isTablet = useMediaQuery('(min-width: 768px)')
 
   if (error !== null) {
     toast.error(error)
@@ -61,7 +63,10 @@ function LoginForm({ popupAuth }: LoginFormProps) {
 
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-      <div className={s.inputsBox} style={{ height: popupAuth ? '' : '206px' }}>
+      <div
+        className={s.inputsBox}
+        style={{ height: popupAuth ? '' : isTablet ? '102px' : '206px' }}
+      >
         <label className={s.label}>
           <input
             {...register('email')}
@@ -81,8 +86,9 @@ function LoginForm({ popupAuth }: LoginFormProps) {
           <p className={s.error}>{errors.password?.message}</p>
         </label>
       </div>
-
-      <Button type="submit">{isLoading ? <Spinner /> : 'Log in'}</Button>
+      <div className={s.btnWrraper}>
+        <Button type="submit">{isLoading ? <Spinner /> : 'Log in'}</Button>
+      </div>
     </form>
   )
 }
