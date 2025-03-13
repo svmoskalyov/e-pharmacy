@@ -3,9 +3,23 @@
   padding: 20px;
   color: var(--bg);
   background-color: var(--accent);
+
+  @media screen and (min-width: 768px) {
+    padding: 32px;
+  }
 }
 
-.footerTop {
+.body {
+  justify-content: space-between;
+  margin-bottom: 80px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    margin-bottom: 40px;
+  }
+}
+
+.bodyA {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -13,58 +27,98 @@
 }
 
 .text {
-  width: 274px;
+  width: 261px;
   font-size: 14px;
   line-height: 18px;
+  letter-spacing: 0.3px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
-.footerBody {}
+.bodyB {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
 
 .navList {
   display: flex;
   gap: 32px;
   margin-bottom: 80px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
 }
 
-.navItem {
+.navLink {
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
-.navLink {}
+.socialList {
+  display: inline-flex;
+  gap: 12px;
+}
 
-.socialList {}
-
-.socialItem {}
-
-.socialLink {}
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  width: 44px;
+  border: 1px solid #f7f8fa4d;
+  border-radius: 10px;
+}
 
 .line {
   display: block;
   margin-bottom: 20px;
   height: 1px;
-  background-color: var(--bg);
+  background-color: #f7f8fa4d;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
 }
 
 .bottomList {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-}
 
-.bottomItem {
-  font-size: 10px;
-  line-height: 10px;
-  text-wrap: nowrap;
+  @media screen and (min-width: 768px) {
+    gap: 25px;
+  }
 }
 
 .bottomItem:nth-child(2) {
   padding: 0 10px;
-  border-left: 1px solid var(--bg);
-  border-right: 1px solid var(--bg);
+  border-left: 1px solid #f7f8fa4d;
+  border-right: 1px solid #f7f8fa4d;
 
+  @media screen and (min-width: 768px) {
+    padding: 0 25px;
+  }
 }
 
 .bottomLink {
+  font-size: 10px;
+  line-height: 10px;
+  text-wrap: nowrap;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 18px;
+  }
 }

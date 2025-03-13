@@ -2,6 +2,7 @@ import { CSSProperties, useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import { useAuthStore } from '../../stores/authStore'
 import { useCartStore } from '../../stores/cartStore'
+import useMediaQuery from '../../hooks/useMediaQuery'
 import Logo from '../ui/Logo'
 import Icon from '../ui/Icon'
 import Drawer from '../Drawer'
@@ -15,8 +16,9 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [amount, setAmount] = useState(0)
   const { pathname } = useLocation()
-  const { isAuth } = useAuthStore()
+  const { isAuth, user } = useAuthStore()
   const { cart } = useCartStore()
+  const isTablet = useMediaQuery('(min-width: 768px)')
 
   let place = ''
   const toggleDrawer = () => setIsOpen(!isOpen)
@@ -51,7 +53,11 @@ function Header() {
           {isAuth && place !== 'home' && (
             <>
               <Cart count={amount} />
-              <Avatar name="John Doe" />
+              <Avatar
+                name={user?.name || 'Guest'}
+                size={isTablet ? '44' : '40'}
+                fs={isTablet ? '18' : '14'}
+              />
             </>
           )}
           {place !== 'auth' && (

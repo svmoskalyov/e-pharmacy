@@ -99,8 +99,9 @@ function RegisterForm() {
           <p className={s.error}>{errors.password?.message}</p>
         </label>
       </div>
-
-      <Button type="submit">{isLoading ? <Spinner /> : 'Register'}</Button>
+      <div className={s.btnWrraper}>
+        <Button type="submit">{isLoading ? <Spinner /> : 'Register'}</Button>
+      </div>
     </form>
   )
 }

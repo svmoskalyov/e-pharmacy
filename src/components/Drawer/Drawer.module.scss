@@ -28,8 +28,16 @@
   z-index: 100;
   transition: width 0.25s ease-in-out;
 
+  @media screen and (min-width: 768px) {
+    padding-bottom: 64px;
+  }
+
   &.open {
     width: 210px;
+
+    @media screen and (min-width: 768px) {
+      width: 334px;
+    }
   }
 }
 
@@ -38,4 +46,9 @@
   padding: 20px;
   padding-left: 154px;
   text-align: right;
+
+  @media screen and (min-width: 768px) {
+    padding: 32px;
+    padding-left: 270px;
+  }
 }

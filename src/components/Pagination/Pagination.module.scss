@@ -6,12 +6,20 @@
 }
 
 .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 35px;
   width: 35px;
   background-color: transparent;
   border: 2px solid rgb(29, 30, 33, 0.05);
   border-radius: 60%;
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    height: 44px;
+    width: 44px;
+  }
 }
 
 .btnChevron {
@@ -30,6 +38,11 @@
   @extend .btn;
   font-weight: 700;
   line-height: 18px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18;
+    line-height: 22px;
+  }
 }
 
 .active {

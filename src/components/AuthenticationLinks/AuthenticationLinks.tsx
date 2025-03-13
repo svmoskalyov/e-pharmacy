@@ -23,7 +23,7 @@ function AuthenticationLinks({ onClose }: AuthenticationLinksProps) {
   }
 
   return (
-    <div className={s.AuthenticationLinks}>
+    <div className={s.authenticationLinks}>
       {isAuth ? (
         <Button variant="outlined" onClick={handleLogout}>
           Log out

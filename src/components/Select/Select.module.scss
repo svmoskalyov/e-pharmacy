@@ -1,6 +1,7 @@
 .select {
   position: relative;
   font-size: 12px;
+  line-height: 18px;
   text-transform: capitalize;
 }
 
@@ -16,6 +17,10 @@
   border-radius: 60px;
   cursor: pointer;
   user-select: none;
+
+  @media screen and (min-width: 768px) {
+    width: 214px;
+  }
 }
 
 .placeholder {
