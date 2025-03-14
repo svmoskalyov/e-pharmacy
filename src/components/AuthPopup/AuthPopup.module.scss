@@ -7,6 +7,11 @@
   width: 343px;
   background-color: var(--text-secondary);
   border-radius: 20px;
+
+  @media screen and (min-width: 768px) {
+    padding: 50px 70px;
+    width: 463px;
+  }
 }
 
 .title {
@@ -26,6 +31,11 @@
   color: #6A6A6F;
   letter-spacing: 0.4px;
   text-align: center;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 .btnToggle {
@@ -42,4 +52,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    top: 20px;
+    right: 20px;
+  }
 }

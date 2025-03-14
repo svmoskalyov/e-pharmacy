@@ -162,7 +162,7 @@ function DeliveryInfo() {
               {totalAmount}
             </span>
           </div>
-          <div>
+          <div className={s.btnBox}>
             <Button type="submit">Place order</Button>
           </div>
         </div>

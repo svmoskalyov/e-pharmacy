@@ -34,10 +34,6 @@
   border-radius: 60px;
   transition: border-color 0.25s ease;
 
-  @media screen and (min-width: 768px) {
-    width: 280px;
-  }
-
   &:focus {
     border-color: var(--accent);
     outline: none;
@@ -45,12 +41,6 @@
 
   &::placeholder {
     color: #1d1e2166;
-  }
-}
-
-.btnWrraper {
-  @media screen and (min-width: 768px) {
-    width: 280px;
   }
 }
 

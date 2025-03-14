@@ -9,6 +9,11 @@ import Button from '../ui/Button'
 import Spinner from '../ui/Spinner'
 import s from './RegisterForm.module.scss'
 
+interface RegisterFormProps {
+  popup?: boolean
+  onHandle?: () => void
+}
+
 interface RegistrationFormValues {
   name: string
   email: string
@@ -32,9 +37,8 @@ const schema = yup.object().shape({
   phone: yup.string().min(8).max(18).required('phone is required')
 })
 
-function RegisterForm() {
+function RegisterForm({ popup, onHandle }: RegisterFormProps) {
   const {
-    reset,
     register,
     handleSubmit,
     formState: { errors }
@@ -43,6 +47,7 @@ function RegisterForm() {
   })
   const navigate = useNavigate()
   const { isLoading, error } = useAuthStore()
+  const changeWidth = popup ? '100%' : '280px'
 
   if (error !== null) {
     toast.error(error)
@@ -52,8 +57,13 @@ function RegisterForm() {
     const registered = await registerUser(data)
     if (registered.success) {
       toast.success(registered.message)
-      navigate('/login')
-      reset()
+      if (popup) {
+        if (onHandle) {
+          return onHandle()
+        }
+      } else {
+        navigate('/login')
+      }
     } else {
       toast.error(registered.message)
     }
@@ -62,7 +72,7 @@ function RegisterForm() {
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={s.inputsBox}>
-        <label className={s.label}>
+        <label className={s.label} style={{ width: `${changeWidth}` }}>
           <input
             {...register('name')}
             className={s.input}
@@ -71,7 +81,7 @@ function RegisterForm() {
           <p className={s.error}>{errors.name?.message}</p>
         </label>
 
-        <label className={s.label}>
+        <label className={s.label} style={{ width: `${changeWidth}` }}>
           <input
             {...register('email')}
             className={s.input}
@@ -80,7 +90,7 @@ function RegisterForm() {
           <p className={s.error}>{errors.email?.message}</p>
         </label>
 
-        <label className={s.label}>
+        <label className={s.label} style={{ width: `${changeWidth}` }}>
           <input
             {...register('phone')}
             className={s.input}
@@ -89,7 +99,7 @@ function RegisterForm() {
           <p className={s.error}>{errors.phone?.message}</p>
         </label>
 
-        <label className={s.label}>
+        <label className={s.label} style={{ width: `${changeWidth}` }}>
           <input
             {...register('password')}
             className={s.input}
@@ -99,7 +109,7 @@ function RegisterForm() {
           <p className={s.error}>{errors.password?.message}</p>
         </label>
       </div>
-      <div className={s.btnWrraper}>
+      <div style={{ width: `${changeWidth}` }}>
         <Button type="submit">{isLoading ? <Spinner /> : 'Register'}</Button>
       </div>
     </form>

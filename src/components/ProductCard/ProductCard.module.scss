@@ -1,35 +1,66 @@
-.productCard {}
+.productCard {
+  &.prod {
+    @media screen and (min-width: 768px) {
+      display: flex;
+      gap: 16px;
+    }
+  }
+}
 
-.image {
+.imgWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 8px;
-  height: 300px;
-  width: 335px;
+  // height: 300px;
+  // width: 335px;
   background-color: #f7f7f7;
   border-radius: 20px;
   border: 1px solid #59b17a99;
+
+  &.med {
+    @media screen and (min-width: 768px) {
+      height: 260px;
+      width: 226px;
+    }
+  }
+
+  &.prod {
+    @media screen and (min-width: 768px) {
+      margin-bottom: 0;
+      height: 284px;
+      width: 364px;
+    }
+  }
+}
+
+.image {
+  height: 100%;
+  border-radius: 20px;
 }
 
 .details {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
   background-color: var(--text-secondary);
   border-radius: 20px;
-}
 
-.med {
-  height: 135px;
-}
+  &.med {
+    height: 135px;
+  }
 
-.prod {
-  height: 160px;
-}
+  &.prod {
+    height: 160px;
 
-.item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    @media screen and (min-width: 768px) {
+      padding: 32px;
+      height: 284px;
+      width: 324px;
+    }
+  }
 }
 
 .name {
@@ -37,20 +68,67 @@
   font-weight: 600;
   line-height: 20px;
   color: var(--text-primary);
-}
 
-.price {
-  @extend .name;
-}
+  &.med {
+    @media screen and (min-width: 768px) {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
 
-.rupee {
-  font-size: 12px;
-  font-weight: 900;
-  color: var(--text-primary);
+  &.prod {
+    @media screen and (min-width: 768px) {
+      font-size: 20px;
+      line-height: 34px;
+    }
+  }
 }
 
 .suppliers {
   font-size: 12px;
   line-height: 18px;
   color: var(--text-muted);
+}
+
+.btnBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--text-primary);
+
+  &.med {
+    @media screen and (min-width: 768px) {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  &.prod {
+    @media screen and (min-width: 768px) {
+      top: calc(258px - 50%);
+      left: 32px;
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+}
+
+.rupee {
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--text-primary);
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 16px;
+  }
 }

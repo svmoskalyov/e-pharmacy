@@ -1,17 +1,17 @@
-import { useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { toast } from 'react-toastify'
 import { useAuthStore } from '../../stores/authStore'
 import { loginUser } from '../../services/api'
+import useMediaQuery from '../../hooks/useMediaQuery'
 import Button from '../ui/Button'
 import Spinner from '../ui/Spinner'
 import s from './LoginForm.module.scss'
-import useMediaQuery from '../../hooks/useMediaQuery'
 
 type LoginFormProps = {
-  popupAuth?: boolean
+  popup?: boolean
 }
 
 interface LoginFormValues {
@@ -33,9 +33,8 @@ const schema = yup.object().shape({
     .required('password is required')
 })
 
-function LoginForm({ popupAuth }: LoginFormProps) {
+function LoginForm({ popup }: LoginFormProps) {
   const {
-    reset,
     register,
     handleSubmit,
     formState: { errors }
@@ -43,8 +42,11 @@ function LoginForm({ popupAuth }: LoginFormProps) {
     resolver: yupResolver(schema)
   })
   const navigate = useNavigate()
+  const { pathname } = useLocation()
+  console.log('🚀 ~ LoginForm ~ pathname:', pathname)
   const { isLoading, error } = useAuthStore()
   const isTablet = useMediaQuery('(min-width: 768px)')
+  const changeWidth = popup ? '100%' : '280px'
 
   if (error !== null) {
     toast.error(error)
@@ -54,8 +56,11 @@ function LoginForm({ popupAuth }: LoginFormProps) {
     const logined = await loginUser(data)
     if (logined.success) {
       toast.success(logined.message)
-      navigate('/')
-      reset()
+      if (popup) {
+        navigate(pathname)
+      } else {
+        navigate('/')
+      }
     } else {
       toast.error(logined.message)
     }
@@ -65,9 +70,9 @@ function LoginForm({ popupAuth }: LoginFormProps) {
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <div
         className={s.inputsBox}
-        style={{ height: popupAuth ? '' : isTablet ? '102px' : '206px' }}
+        style={{ height: popup ? '' : isTablet ? '102px' : '206px' }}
       >
-        <label className={s.label}>
+        <label className={s.label} style={{ width: `${changeWidth}` }}>
           <input
             {...register('email')}
             className={s.input}
@@ -76,7 +81,7 @@ function LoginForm({ popupAuth }: LoginFormProps) {
           <p className={s.error}>{errors.email?.message}</p>
         </label>
 
-        <label className={s.label}>
+        <label className={s.label} style={{ width: `${changeWidth}` }}>
           <input
             {...register('password')}
             className={s.input}
@@ -86,7 +91,7 @@ function LoginForm({ popupAuth }: LoginFormProps) {
           <p className={s.error}>{errors.password?.message}</p>
         </label>
       </div>
-      <div className={s.btnWrraper}>
+      <div style={{ width: `${changeWidth}` }}>
         <Button type="submit">{isLoading ? <Spinner /> : 'Log in'}</Button>
       </div>
     </form>

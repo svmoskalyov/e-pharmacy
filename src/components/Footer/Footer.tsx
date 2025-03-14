@@ -17,7 +17,6 @@ function Footer() {
             life, and enjoy every moment.
           </p>
         </div>
-
         <div className={s.bodyB}>
           <ul className={s.navList}>
             <li>
@@ -36,7 +35,6 @@ function Footer() {
               </Link>
             </li>
           </ul>
-
           {isTablet && (
             <ul className={s.socialList}>
               <li>
@@ -58,9 +56,7 @@ function Footer() {
           )}
         </div>
       </div>
-
       <span className={s.line}></span>
-
       <ul className={s.bottomList}>
         <li className={s.bottomItem}>
           &copy; E-Pharmacy 2023. All Rights Reserved

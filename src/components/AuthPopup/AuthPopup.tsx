@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useAuthStore } from '../../stores/authStore'
+import useMediaQuery from '../../hooks/useMediaQuery'
 import LoginForm from '../LoginForm'
 import RegisterForm from '../RegisterForm'
 import Icon from '../ui/Icon'
@@ -9,7 +11,11 @@ interface AuthPopupProps {
 }
 
 function AuthPopup({ onClose }: AuthPopupProps) {
+  const { isAuth } = useAuthStore()
   const [toggleAuth, setToggleAuth] = useState(true)
+  const isTablet = useMediaQuery('(min-width: 768px)')
+
+  if (isAuth) onClose()
 
   const handleToggleAuth = () => {
     setToggleAuth(!toggleAuth)
@@ -27,7 +33,7 @@ function AuthPopup({ onClose }: AuthPopupProps) {
       </p>
       {toggleAuth && (
         <>
-          <RegisterForm />
+          <RegisterForm popup onHandle={handleToggleAuth} />
           <button className={s.btnToggle} onClick={handleToggleAuth}>
             Already have an account?
           </button>
@@ -35,14 +41,19 @@ function AuthPopup({ onClose }: AuthPopupProps) {
       )}
       {!toggleAuth && (
         <>
-          <LoginForm popupAuth />
+          <LoginForm popup />
           <button className={s.btnToggle} onClick={handleToggleAuth}>
             Don't have an account?
           </button>
         </>
       )}
       <button className={s.btnClose} aria-label="close popup" onClick={onClose}>
-        <Icon name="close" size="20px" color="#000" sw="4" />
+        <Icon
+          name="close"
+          size={isTablet ? '24px' : '20px'}
+          color="#000"
+          sw="4"
+        />
       </button>
     </div>
   )

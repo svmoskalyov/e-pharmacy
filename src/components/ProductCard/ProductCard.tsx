@@ -53,33 +53,33 @@ function ProductCard({ product }: ProductCardProps) {
 
   return (
     <>
-      <div className={s.productCard}>
-        <img className={s.image} src={photo} alt={name} />
-
-        <ul className={`${s.details} ${place ? s['med'] : s['prod']}`}>
-          <li className={s.item}>
-            <h3 className={s.name}>{name}</h3>
-            <p className={s.price}>
-              <span className={s.rupee}>&#x9F3;</span>
-              {price}
-            </p>
-          </li>
-          <li className={s.item}>
+      <div className={`${s.productCard} ${place ? s['med'] : s['prod']}`}>
+        <div className={`${s.imgWrapper} ${place ? s['med'] : s['prod']}`}>
+          <img className={s.image} src={photo} alt={name} />
+        </div>
+        <div className={`${s.details} ${place ? s['med'] : s['prod']}`}>
+          <div>
+            <h3 className={`${s.name} ${place ? s['med'] : s['prod']}`}>
+              {name}
+            </h3>
             <p className={s.suppliers}>{suppliers}</p>
-          </li>
-          <li className={s.item}>
+          </div>
+          <div className={s.btnBox}>
             {!place && (
               <ProductQuantity
                 quantityMax={prodQuantity}
                 onQuantityChange={(quantity: number) => setProdInCart(quantity)}
               />
             )}
-
             <Button
               variant="contained"
               size={place ? 'small' : 'medium'}
               onClick={addToCart}
               disabled={stock === '0'}
+              style={{
+                width: place ? '108px' : '140px',
+                height: place ? '40px' : '44px'
+              }}
             >
               Add to cart
             </Button>
@@ -92,8 +92,12 @@ function ProductCard({ product }: ProductCardProps) {
                 Details
               </ButtonLink>
             )}
-          </li>
-        </ul>
+          </div>
+          <p className={`${s.price} ${place ? s['med'] : s['prod']}`}>
+            <span className={s.rupee}>&#x9F3;</span>
+            {price}
+          </p>
+        </div>
       </div>
       <Backdrop
         show={showBackdrop}

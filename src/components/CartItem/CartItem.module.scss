@@ -2,6 +2,10 @@
   display: flex;
   gap: 12px;
   padding: 20px 0;
+
+  @media screen and (min-width: 768px) {
+    gap: 20px;
+  }
 }
 
 .cartItem:not(:last-child) {
@@ -13,15 +17,32 @@
   width: 120px;
   border: 2px solid #f1f1f1;
   border-radius: 27px;
+
+  @media screen and (min-width: 768px) {
+    height: 133px;
+    width: 122px;
+  }
 }
 
 .detailBox {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media screen and (min-width: 768px) {
+    width: 100%;
+  }
 }
 
-.infoBox {}
+.infoBox {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
 
 .name {
   width: 203px;
@@ -49,11 +70,22 @@
   font-weight: 500;
   line-height: 24px;
   color: var(--text-primary);
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 18px;
+  }
 }
 
 .rupee {
   margin-right: 4px;
   font-size: 14px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 12px;
+  }
 }
 
 .btnBox {
