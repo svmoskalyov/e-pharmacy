@@ -43,7 +43,6 @@ function LoginForm({ popup }: LoginFormProps) {
   })
   const navigate = useNavigate()
   const { pathname } = useLocation()
-  console.log('🚀 ~ LoginForm ~ pathname:', pathname)
   const { isLoading, error } = useAuthStore()
   const isTablet = useMediaQuery('(min-width: 768px)')
   const changeWidth = popup ? '100%' : '280px'
