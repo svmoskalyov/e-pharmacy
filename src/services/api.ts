@@ -8,6 +8,7 @@ import {
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore'
 import './firebaseConfig'
 import { useAuthStore } from '../stores/authStore'
+import { useCartStore } from '../stores/cartStore'
 import { get, getDatabase, ref } from 'firebase/database'
 
 const auth = getAuth()
@@ -110,12 +111,14 @@ export const loginUser = async ({
 
 export const logoutUser = async (): Promise<InfoResult> => {
   const { setIsLoading, setError, setUser, setIsAuth } = useAuthStore.getState()
+  const { setCart } = useCartStore.getState()
   setIsLoading(true)
   setError(null)
 
   try {
     await signOut(auth)
     setUser(null)
+    setCart([])
     setIsAuth(false)
     setIsLoading(false)
     return { success: true, message: 'Logout successful!' }
