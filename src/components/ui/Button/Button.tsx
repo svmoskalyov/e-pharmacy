@@ -3,7 +3,7 @@ import s from './Button.module.scss'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode
-  variant?: 'contained' | 'outlined' | 'dangered'
+  variant?: 'contained' | 'outlined' | 'outlined-muted' | 'dangered'
   size?: 'small' | 'medium' | 'large'
   icon?: ReactNode
   isLoading?: boolean

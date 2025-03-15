@@ -4,6 +4,10 @@
   justify-content: center;
   background-color: var(--accent-muted);
   border-radius: 50%;
+
+  &.muted {
+    border: 1px solid #f1f1f1;
+  }
 }
 
 .name {
@@ -16,5 +20,9 @@
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 22px;
+  }
+
+  &.muted {
+    color: var(--text-secondary);
   }
 }

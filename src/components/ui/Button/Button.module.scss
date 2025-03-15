@@ -30,6 +30,12 @@
     border: 1px solid #f1f1f1;
   }
 
+  &.outlined-muted {
+    font-weight: 400;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+
   &.dangered {
     color: var(--danger);
     background-color: var(--danger-bg);
@@ -50,7 +56,7 @@
   }
 
   &.large {
-    padding: 18px 40px;
+    padding: 16px 32px;
   }
 
   &.loading {
