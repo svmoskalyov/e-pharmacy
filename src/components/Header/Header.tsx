@@ -19,6 +19,7 @@ function Header() {
   const { isAuth, user } = useAuthStore()
   const { cart } = useCartStore()
   const isTablet = useMediaQuery('(min-width: 768px)')
+  const isDesktop = useMediaQuery('(min-width: 1440px)')
 
   let place = ''
   const toggleDrawer = () => setIsOpen(!isOpen)
@@ -48,9 +49,28 @@ function Header() {
         }
       >
         <Logo place={place} />
+        
+        {isDesktop && <NavigationLinks />}
 
         <div className={s.actions}>
-          {isAuth && place !== 'home' && (
+          {isDesktop && (
+            <>
+              {isAuth && (
+                <>
+                  <Cart count={amount} placeHome={place === 'home'} />
+                  <Avatar
+                    name={user?.name || 'Guest'}
+                    size={isTablet ? '44' : '40'}
+                    fs={isTablet ? '18' : '14'}
+                    placeHome={place === 'home'}
+                  />
+                </>
+              )}
+              <AuthenticationLinks placeHome={place === 'home'} />
+            </>
+          )}
+
+          {isAuth && place !== 'home' && !isDesktop && (
             <>
               <Cart count={amount} />
               <Avatar
@@ -60,7 +80,8 @@ function Header() {
               />
             </>
           )}
-          {place !== 'auth' && (
+
+          {place !== 'auth' && !isDesktop && (
             <button aria-label="drawer open" onClick={toggleDrawer}>
               <Icon
                 name="burger"
@@ -74,10 +95,12 @@ function Header() {
         </div>
       </header>
 
-      <Drawer isOpen={isOpen} onClose={toggleDrawer}>
-        <NavigationLinks onClose={toggleDrawer} />
-        <AuthenticationLinks onClose={toggleDrawer} />
-      </Drawer>
+      {!isDesktop && (
+        <Drawer isOpen={isOpen} onClose={toggleDrawer}>
+          <NavigationLinks onClose={toggleDrawer} />
+          <AuthenticationLinks onClose={toggleDrawer} />
+        </Drawer>
+      )}
     </>
   )
 }

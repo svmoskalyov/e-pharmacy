@@ -7,6 +7,10 @@
   @media screen and (min-width: 768px) {
     padding: 32px;
   }
+
+  @media screen and (min-width: 1440px) {
+    padding: 40px 128px;
+  }
 }
 
 .body {
@@ -16,6 +20,10 @@
   @media screen and (min-width: 768px) {
     display: flex;
     margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    gap: 115px;
   }
 }
 
@@ -44,6 +52,14 @@
 
   @media screen and (min-width: 768px) {
     align-items: flex-end;
+  }
+
+  @media screen and (min-width: 1440px) {
+    // align-items: flex-end;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
   }
 }
 

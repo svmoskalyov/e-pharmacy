@@ -12,6 +12,11 @@
     height: 924px;
     padding: 0 32px;
   }
+
+  @media screen and (min-width: 1440px) {
+    height: 700px;
+    padding: 0 128px;
+  }
 }
 
 .box {
@@ -28,6 +33,11 @@
 
   @media screen and (min-width: 768px) {
     height: 508px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin: 0 auto;
+    width: 749px;
   }
 }
 
