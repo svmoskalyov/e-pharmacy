@@ -3,10 +3,6 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-
-  @media screen and (min-width: 768px) {
-    gap: 32px;
-  }
 }
 
 .title {
@@ -24,15 +20,18 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin: 0 auto;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px;
+    width: 704px;
   }
 
   @media screen and (min-width: 1440px) {
     row-gap: 40px;
-    column-gap: 36px;
+    column-gap: 20px;
+    width: 1184px;
   }
 }

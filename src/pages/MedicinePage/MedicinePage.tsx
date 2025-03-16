@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useProductStore } from '../../stores/productStore'
+import useMediaQuery from '../../hooks/useMediaQuery'
 import SectionWrapper from '../../components/SectionWrapper'
 import Pagination from '../../components/Pagination'
 import ProductsFilter from '../../components/ProductsFilter'
@@ -22,7 +23,8 @@ function MedicinePage() {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const products = useProductStore(state => state.products)
   const fetchProducts = useProductStore(state => state.fetchProducts)
-  const itemsPerPage = 12
+  const isDesktop = useMediaQuery('(min-height: 2700px)')
+  const itemsPerPage = isDesktop ? 16 : 12
 
   const filterChoice = (filter: Filter) => {
     setFilter(filter)

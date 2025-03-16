@@ -3,6 +3,7 @@
 .mainBanner {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0 20px;
   height: 728px;
   color: var(--text-secondary);
@@ -21,7 +22,7 @@
 
 .box {
   height: 331px;
-  width: 100%;
+  width: 335px;
   background-image: url('../../assets/images/pill-wg1x.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -33,6 +34,7 @@
 
   @media screen and (min-width: 768px) {
     height: 508px;
+    width: 704px;
   }
 
   @media screen and (min-width: 1440px) {

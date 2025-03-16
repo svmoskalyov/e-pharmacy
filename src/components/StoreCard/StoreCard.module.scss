@@ -17,13 +17,14 @@
   }
 
   @media screen and (min-width: 1440px) {
-    width: 392px;
+    width: 381px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.24);
   }
 
   &.plc {
     justify-content: space-between;
     height: 276px;
+    box-shadow: none;
   }
 }
 

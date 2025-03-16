@@ -29,7 +29,9 @@ function AuthenticationLinks({ placeHome, onClose }: AuthenticationLinksProps) {
     <div className={s.authenticationLinks}>
       {isAuth ? (
         <Button
-          variant={placeHome ? 'outlined' : 'outlined-muted'}
+          variant={
+            placeHome ? 'outlined' : isDesktop ? 'outlined-muted' : 'outlined'
+          }
           size="large"
           onClick={handleLogout}
         >
@@ -48,7 +50,9 @@ function AuthenticationLinks({ placeHome, onClose }: AuthenticationLinksProps) {
               color:
                 isDesktop && placeHome
                   ? 'var(--text-secondary)'
-                  : 'var(--accent)'
+                  : isDesktop
+                  ? 'outlined-muted'
+                  : 'var(--text-secondary)'
             }}
             onClick={onClose}
           >

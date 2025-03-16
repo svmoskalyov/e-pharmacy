@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { toast } from 'react-toastify'
 import { registerUser } from '../../services/api'
 import { useAuthStore } from '../../stores/authStore'
+import useMediaQuery from '../../hooks/useMediaQuery'
 import Button from '../ui/Button'
 import Spinner from '../ui/Spinner'
 import s from './RegisterForm.module.scss'
@@ -47,7 +48,9 @@ function RegisterForm({ popup, onHandle }: RegisterFormProps) {
   })
   const navigate = useNavigate()
   const { isLoading, error } = useAuthStore()
-  const changeWidth = popup ? '100%' : '280px'
+  const isTablet = useMediaQuery('(min-width: 768px)')
+
+  const changeWidth = popup ? '100%' : isTablet ? '280px' : '100%'
 
   if (error !== null) {
     toast.error(error)

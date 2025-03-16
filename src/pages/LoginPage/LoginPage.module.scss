@@ -2,12 +2,26 @@
 
 .loginPage {
   position: relative;
+  margin: 0 auto;
   padding: 80px 20px 190px;
   height: 100%;
   overflow: hidden;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 767px) {
+    width: 375px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
     padding: 140px 32px 190px;
+    width: 704px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    justify-content: center;
+    gap: 54px;
+    margin: 0;
+    padding: 240px 96px 190px;
   }
 }
 
@@ -17,6 +31,12 @@
 
   @media screen and (min-width: 768px) {
     margin-bottom: 54px;
+    height: 240px;
+    width: 614px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin: 0;
   }
 }
 
@@ -47,7 +67,7 @@
 
   @media screen and (min-width: 768px) {
     top: -110px;
-    right: 110px;
+    right: 0;
     height: 179px;
     width: 175px;
   }
@@ -60,6 +80,14 @@
 .mark {
   margin: 0 8px;
   color: var(--accent);
+}
+
+.authBox {
+  @media screen and (min-width: 1440px) {
+    margin: 0;
+    height: 240px;
+    width: 574px;
+  }
 }
 
 .linkBox {
@@ -78,5 +106,10 @@
   @media screen and (min-width: 768px) {
     right: -164px;
     bottom: -14px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    right: -130px;
+    bottom: -20px;
   }
 }

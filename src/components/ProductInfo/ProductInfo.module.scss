@@ -3,9 +3,22 @@
   flex-direction: column;
   gap: 20px;
   height: 783px;
+  width: 335px;
   padding: 20px 20px 40px;
   background-color: var(--text-secondary);
   border-radius: 27px;
+
+  @media screen and (min-width: 768px) {
+    padding: 32px;
+    height: 697px;
+    width: 704px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 40px;
+    height: 709px;
+    width: 800px;
+  }
 }
 
 .tabsContainer {

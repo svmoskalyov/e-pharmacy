@@ -45,7 +45,8 @@ function LoginForm({ popup }: LoginFormProps) {
   const { pathname } = useLocation()
   const { isLoading, error } = useAuthStore()
   const isTablet = useMediaQuery('(min-width: 768px)')
-  const changeWidth = popup ? '100%' : '280px'
+
+  const changeWidth = popup ? '100%' : isTablet ? '280px' : '100%'
 
   if (error !== null) {
     toast.error(error)

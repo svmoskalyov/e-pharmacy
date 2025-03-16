@@ -8,8 +8,10 @@ function CartPage() {
     <SectionWrapper>
       <div className={s.cartPage}>
         <h2 className={s.title}>Cart</h2>
-        <DeliveryInfo />
-        <CartListItems />
+        <div className={s.box}>
+          <DeliveryInfo />
+          <CartListItems />
+        </div>
       </div>
     </SectionWrapper>
   )

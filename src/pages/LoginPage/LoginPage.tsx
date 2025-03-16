@@ -13,15 +13,17 @@ function LoginPage() {
         </h2>
         <div className={s.img}></div>
       </div>
-      <LoginForm />
-      <div className={s.linkBox}>
-        <ButtonLink
-          to="/register"
-          variant="text"
-          style={{ color: '#1d1e2133' }}
-        >
-          Don't have an account?
-        </ButtonLink>
+      <div className={s.authBox}>
+        <LoginForm />
+        <div className={s.linkBox}>
+          <ButtonLink
+            to="/register"
+            variant="text"
+            style={{ color: '#1d1e2133' }}
+          >
+            Don't have an account?
+          </ButtonLink>
+        </div>
       </div>
       <div className={s.decor}>
         <DecorLines variant="auth" />
