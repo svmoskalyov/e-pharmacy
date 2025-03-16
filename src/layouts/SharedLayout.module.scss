@@ -3,6 +3,7 @@
   display: grid;
   grid:
     "header" 84px "main" 1fr var(--footer) / 1fr;
+  margin: 0 auto;
   max-width: 1980px;
   min-width: 320px;
   height: 100vh;
