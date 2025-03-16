@@ -49,7 +49,7 @@ function Header() {
         }
       >
         <Logo place={place} />
-        
+
         {isDesktop && <NavigationLinks />}
 
         <div className={s.actions}>
