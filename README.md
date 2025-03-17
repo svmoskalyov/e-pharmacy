@@ -1,50 +1,14 @@
-# React + TypeScript + Vite
+# 💊 [E-PHARMACY](https://e-pharmacy-pi.vercel.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 📝 About the application
+Project, web platform for ordering in online pharmacies.
+The layout is adaptive, with breakpoints (375px, 768px, 1440px). Form fields are validated. Routing is applied in the application. By default, the user is taken to the main page - Home. Medicine store - a page with a list of pharmacies. Medicine - lists of medicines, there is also filtering by products. Cart - a cart page, for ordering. PagesMedicine, Cart - are available only to authorized users. On page Medicine - pagination is implemented, which appears when the number of products exceeds the specified one (12 units).
 
-Currently, two official plugins are available:
+### 🧰 Technologies stack 
+TypeScript, SASS, React DOM, React Router, React hook form, Yup, Firebase Database, Firebase Auth, Zustand, Vite, Prettier, ESLint.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+![image](https://github.com/user-attachments/assets/b58f0e6b-f4c4-4e8f-8905-f298c1b6d178)
+![image](https://github.com/user-attachments/assets/b04b3e8d-9326-4079-a2f2-ad8b49cbe384)
+![image](https://github.com/user-attachments/assets/321a3555-50ba-4e01-89a9-41a0749017aa)
+![image](https://github.com/user-attachments/assets/d58303ce-369b-4076-9636-a1c4477cf6bc)
