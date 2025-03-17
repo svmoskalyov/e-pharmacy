@@ -62,8 +62,6 @@ function RegisterForm({ popup, onHandle }: RegisterFormProps) {
       } else {
         navigate('/login')
       }
-    } else {
-      toast.error(registered.message)
     }
   }
 

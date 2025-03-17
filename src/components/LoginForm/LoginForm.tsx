@@ -56,8 +56,6 @@ function LoginForm({ popup }: LoginFormProps) {
       } else {
         navigate('/')
       }
-    } else {
-      toast.error(logined.message)
     }
   }
 
