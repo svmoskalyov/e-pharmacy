@@ -1,9 +1,35 @@
+import { useEffect } from 'react'
+import { toast } from 'react-toastify'
+import { useAuthStore } from '../../stores/authStore'
 import RegisterForm from '../../components/RegisterForm'
 import ButtonLink from '../../components/ui/ButtonLink'
 import DecorLines from '../../components/ui/DecorLines'
 import s from './RegisterPage.module.scss'
 
 function RegisterPage() {
+  const { error } = useAuthStore()
+
+  const createErrorMessage = (error: string) => {
+    if (`${error}` === 'Firebase: Error (auth/too-many-requests).') {
+      toast.error('Too many requests.')
+    } else if (
+      `${error}` === 'Firebase: Error (auth/network-request-failed).'
+    ) {
+      toast.error('Problem with network')
+    } else if (`${error}` === 'Firebase: Error (auth/email-already-in-use).') {
+      toast.error('Email already exists')
+    } else {
+      console.log(error)
+    }
+    return error
+  }
+
+  useEffect(() => {
+    if (error) {
+      createErrorMessage(error)
+    }
+  }, [error])
+
   return (
     <div className={s.registerPage}>
       <div className={s.headerBox}>

@@ -47,14 +47,9 @@ function RegisterForm({ popup, onHandle }: RegisterFormProps) {
     resolver: yupResolver(schema)
   })
   const navigate = useNavigate()
-  const { isLoading, error } = useAuthStore()
+  const { isLoading } = useAuthStore()
   const isTablet = useMediaQuery('(min-width: 768px)')
-
   const changeWidth = popup ? '100%' : isTablet ? '280px' : '100%'
-
-  if (error !== null) {
-    toast.error(error)
-  }
 
   const onSubmit: SubmitHandler<RegistrationFormValues> = async data => {
     const registered = await registerUser(data)

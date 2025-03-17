@@ -43,14 +43,9 @@ function LoginForm({ popup }: LoginFormProps) {
   })
   const navigate = useNavigate()
   const { pathname } = useLocation()
-  const { isLoading, error } = useAuthStore()
+  const { isLoading } = useAuthStore()
   const isTablet = useMediaQuery('(min-width: 768px)')
-
   const changeWidth = popup ? '100%' : isTablet ? '280px' : '100%'
-
-  if (error !== null) {
-    toast.error(error)
-  }
 
   const onSubmit: SubmitHandler<LoginFormValues> = async data => {
     const logined = await loginUser(data)

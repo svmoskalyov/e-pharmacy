@@ -1,9 +1,39 @@
+import { useEffect } from 'react'
+import { toast } from 'react-toastify'
+import { useAuthStore } from '../../stores/authStore'
 import LoginForm from '../../components/LoginForm'
 import ButtonLink from '../../components/ui/ButtonLink'
 import DecorLines from '../../components/ui/DecorLines'
 import s from './LoginPage.module.scss'
 
 function LoginPage() {
+  const { error } = useAuthStore()
+
+  const createErrorMessage = (error: string) => {
+    if (`${error}` === 'Firebase: Error (auth/too-many-requests).') {
+      toast.error('Too many requests.')
+    } else if (
+      `${error}` === 'Firebase: Error (auth/network-request-failed).'
+    ) {
+      toast.error('Problem with network')
+    } else if (
+      `${error}` === 'Firebase: Error (auth/invalid-login-credentials).'
+    ) {
+      toast.error('Email or password is not correct')
+    } else if (`${error}` === 'Firebase: Error (auth/invalid-credential).') {
+      toast.error('User not found')
+    } else {
+      console.log(error)
+    }
+    return error
+  }
+
+  useEffect(() => {
+    if (error) {
+      createErrorMessage(error)
+    }
+  }, [error])
+
   return (
     <div className={s.loginPage}>
       <div className={s.headerBox}>
