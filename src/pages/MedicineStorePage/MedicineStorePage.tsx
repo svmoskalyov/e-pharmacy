@@ -16,6 +16,10 @@ function MedicineStorePage() {
     if (medicinePharmacie.length === 0) fetchMedicinePharmacie()
   }, [fetchMedicinePharmacie, medicinePharmacie.length])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <SectionWrapper>
       <div className={s.medicineStorePage}>

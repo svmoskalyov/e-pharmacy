@@ -1,10 +1,12 @@
 import { Link } from 'react-router'
+import { useAuthStore } from '../../stores/authStore'
 import useMediaQuery from '../../hooks/useMediaQuery'
 import Logo from '../ui/Logo'
 import Icon from '../ui/Icon'
 import s from './Footer.module.scss'
 
 function Footer() {
+  const { isAuth } = useAuthStore()
   const isTablet = useMediaQuery('(min-width: 768px)')
 
   return (
@@ -29,26 +31,40 @@ function Footer() {
                 Medicine store
               </Link>
             </li>
-            <li>
-              <Link to="/medicine" className={s.navLink}>
-                Medicine
-              </Link>
-            </li>
+            {isAuth && (
+              <li>
+                <Link to="/medicine" className={s.navLink}>
+                  Medicine
+                </Link>
+              </li>
+            )}
           </ul>
           {isTablet && (
             <ul className={s.socialList}>
               <li>
-                <Link to="https://www.facebook.com" className={s.socialLink}>
+                <Link
+                  to="https://www.facebook.com"
+                  target="_blank"
+                  className={s.socialLink}
+                >
                   <Icon name="facebook" size="28" />
                 </Link>
               </li>
               <li>
-                <Link to="https://www.instagram.com" className={s.socialLink}>
+                <Link
+                  to="https://www.instagram.com"
+                  target="_blank"
+                  className={s.socialLink}
+                >
                   <Icon name="instagram" size="28" />
                 </Link>
               </li>
               <li>
-                <Link to="https://www.youtube.com" className={s.socialLink}>
+                <Link
+                  to="https://www.youtube.com"
+                  target="_blank"
+                  className={s.socialLink}
+                >
                   <Icon name="youtube" size="28" />
                 </Link>
               </li>

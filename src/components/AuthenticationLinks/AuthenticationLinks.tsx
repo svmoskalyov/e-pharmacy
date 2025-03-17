@@ -51,7 +51,7 @@ function AuthenticationLinks({ placeHome, onClose }: AuthenticationLinksProps) {
                 isDesktop && placeHome
                   ? 'var(--text-secondary)'
                   : isDesktop
-                  ? 'outlined-muted'
+                  ? 'var(--accent)'
                   : 'var(--text-secondary)'
             }}
             onClick={onClose}
